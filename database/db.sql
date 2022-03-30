@@ -1,32 +1,36 @@
-CREATE DATABASE IF NOT EXISTS `name_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS `test_gourmetapp_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-USE `name_db`;
+USE `test_gourmet_db`;
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
   `nickname` varchar(50) NOT NULL,
-  `avatar` varchar(50),
-  `backgroundImage` varchar(50),
+  `avatar` varchar(255),
+  `backgroundImage` varchar(255),
+  `biography` varchar(255),
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
 DESCRIBE users;
 
 CREATE TABLE IF NOT EXISTS `posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `userid` int NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` varchar(100),
-  `image` varchar(50),
-  `posted` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `description` varchar(255),
+  `image` varchar(255),
+  `category` varchar(50),
   `likes` int,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
 DESCRIBE posts;
+
+
+
 
 CREATE TABLE IF NOT EXISTS `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

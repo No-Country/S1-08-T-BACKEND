@@ -11,6 +11,7 @@ import { config } from 'dotenv';
 
 
 import userRouter from '../routers/userRouter/index.js';
+import uploadRouter from '../routers/uploadRouter/index.js';
 
 
 //dotenv

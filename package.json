@@ -7,7 +7,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node --experimental-modules backend/server",
     "server": "cross-env NODE_ENV=depelopment nodemon --experimental-modules server/index.js",
-    "dev": "npm server",
+    "dev": "npm run server",
     "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --verbose --detectOpenHandles ",
     "test:watch": "npm run test -- --watchAll"
   },

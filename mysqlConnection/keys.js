@@ -9,6 +9,6 @@ export const databaseProduction = {
 export const databaseTest = {
     host: "localhost",
     user: "root",
-    password: "",
-    database: ""
+    password: "InGamerG70",
+    database: "test_gourmetapp_db"
 };

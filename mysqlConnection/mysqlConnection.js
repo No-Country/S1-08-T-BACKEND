@@ -8,7 +8,7 @@ config();
 
 const { NODE_ENV } = process.env
 
-const database =  NODE_ENV === 'test'
+const database =  NODE_ENV === 'test' || 'depelopment'
 ? databaseTest
 : databaseProduction
 
