@@ -7,7 +7,7 @@ POST http://localhost:8000/api/posts
 Content-Type: application/json
 
 {
-    "userid": "3",
+    "userid": "2",
     "description": "que buen postre",
     "image": "https://picsum.photos/id/1/200/300",
     "likes": 654
