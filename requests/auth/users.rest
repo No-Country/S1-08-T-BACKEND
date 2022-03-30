@@ -84,9 +84,9 @@ DELETE http://localhost:8000/api/users/delete/6
 
 ### host remoto
 
-### Login POST https://api-dgusto.herokuapp.com/api/users/register Content-Type: application/json
+### Login POST https://api-gout.herokuapp.com/api/users/register Content-Type: application/json
 
-POST https://api-dgusto.herokuapp.com/api/users/register 
+POST https://api-gout.herokuapp.com/api/users/register 
 Content-Type: application/json
 
 {
@@ -96,8 +96,8 @@ Content-Type: application/json
   "nickname": "prueba2"
 }
 
-### Login POST https://api-dgusto.herokuapp.com/api/users/login Content-Type: application/json
-POST https://api-dgusto.herokuapp.com/api/users/login 
+### Login POST https://api-gout.herokuapp.com/api/users/login Content-Type: application/json
+POST https://api-gout.herokuapp.com/api/users/login 
 Content-Type: application/json
 
 {
@@ -106,10 +106,10 @@ Content-Type: application/json
 }
 
 
-### users GET https://api-dgusto.herokuapp.com/api/users Content-Type: application/json
+### users GET https://api-gout.herokuapp.com/api/users Content-Type: application/json
 
 
 
-GET https://api-dgusto.herokuapp.com/api/users
+GET https://api-gout.herokuapp.com/api/users
 
 
