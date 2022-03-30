@@ -3,15 +3,11 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 
-
-import pkg from 'body-parser';
-const { json: _json, urlencoded: _urlencoded } = pkg;
-
 import { config } from 'dotenv';
-
 
 import userRouter from '../routers/userRouter/index.js';
 import uploadRouter from '../routers/uploadRouter/index.js';
+import postRouter from '../routers/postRouter/index.js';
 
 
 //dotenv
@@ -19,13 +15,7 @@ config();
 
 //initializations
 const app = express();
-app.use(urlencoded({extended: true }));
-app.use(json());
 app.use(cors());
-
-
-app.use(_json());
-app.use(_urlencoded({extended: false})); 
 
 //Middlewares
 app.use(morgan('dev'));
@@ -36,7 +26,8 @@ app.use(morgan('dev'));
 //users
 app.use('/api/users', userRouter);
 
-
+//posts
+app.use('/api/posts', postRouter);
 
 //uploads
 app.use('/api/uploads', uploadRouter);
