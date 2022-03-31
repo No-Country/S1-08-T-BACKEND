@@ -9,7 +9,8 @@
     "server": "cross-env NODE_ENV=depelopment nodemon --experimental-modules server/index.js",
     "dev": "npm run server",
     "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --verbose --detectOpenHandles ",
-    "test:watch": "npm run test -- --watchAll"
+    "test:watch": "npm run test -- --watchAll",
+    "lint": "npx eslint --fix ."
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -38,12 +39,10 @@
     "passport-local": "^1.0.0",
     "promise-mysql": "^5.0.4"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/No-Country/S1-08-T-BACKEND.git"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -52,9 +51,12 @@
   },
   "homepage": "https://github.com/No-Country/S1-08-T-BACKEND#readme",
   "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
+    "prettier": "^2.6.1",
     "supertest": "^6.2.2"
   }
-
 }
