@@ -1,5 +1,17 @@
 import expressAsyncHandler from 'express-async-handler';
 import db from '../mysqlConnection/mysqlConnection.js';
+import { 
+  deleteQueryDeletePost, 
+  intoQueryCreatePost, 
+  selectQueryDeletePost, 
+  selectQueryEditPost, 
+  selectQueryGetAllPostToUserId, 
+  selectQueryGetposts, 
+  selectQueryGetPostToId, 
+  selectQuerylikesPost, 
+  updateQueryEditPost, 
+  updateQuerylikesPost 
+} from '../querysSql/postsQuerys.js';
 
 
 
@@ -10,7 +22,7 @@ export const createPost = expressAsyncHandler(async (req, res) => {
   const { userid, description, image, category, likes } = req.body;
 
   try {
-    const sqlMakePost_into = `INSERT INTO posts ( userid, description, image, category, likes) VALUES ( '${userid}', '${description}','${image}','${likes}','${category}')`;
+    const sqlMakePost_into = intoQueryCreatePost(userid, description, image, category, likes);
     await db.query(sqlMakePost_into);
 
     // status code 201  if all goes well, return ok: true
@@ -33,7 +45,7 @@ export const createPost = expressAsyncHandler(async (req, res) => {
 export const getPosts = expressAsyncHandler(async (req, res) => {
 
   try {
-    const sqlMakePosts = `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.posted, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE P.userid=U.id`
+    const sqlMakePosts = selectQueryGetposts();
     const posts = await db.query(sqlMakePosts);
 
     console.log(posts);
@@ -61,7 +73,7 @@ export const getPostToId = expressAsyncHandler(async (req, res) => {
   const { id } = req.params;
 
   try {
-    const sqlMakePost = `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.posted, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE  P.id = '${id}' && P.userid=U.id`
+    const sqlMakePost = selectQueryGetPostToId(id);
     const post = await db.query(sqlMakePost);
     console.log(post[0]);
     if (post[0]) {
@@ -101,7 +113,7 @@ export const getAllPostToUserId = expressAsyncHandler(async (req, res) => {
   const { userid } = req.params;
 
   try {
-    const sqlMakePost = `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.posted, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE  P.userid = '${userid}' && P.userid=U.id`
+    const sqlMakePost =selectQueryGetAllPostToUserId(userid);
     const post = await db.query(sqlMakePost);
     console.log(post);
     if (post) {
@@ -129,7 +141,7 @@ export const editPost = expressAsyncHandler(async (req, res) => {
   try {
 
     // query to mysql DB 
-    const sqlMakePost = `SELECT * FROM posts WHERE id = '${id}'`
+    const sqlMakePost = selectQueryEditPost(id);
     const post = await db.query(sqlMakePost);
     console.log(post[0])
 
@@ -147,7 +159,7 @@ export const editPost = expressAsyncHandler(async (req, res) => {
         description: description || descriptionDB
       }
 
-      await db.query('UPDATE posts set ? WHERE id = ?', [updatedPosttoDB, id]);
+      await db.query(updateQueryEditPost(id, updatedPosttoDB));
       res.status(201).json({
         ok: true,
         msg: "Post updated successfully"
@@ -167,14 +179,14 @@ export const editPost = expressAsyncHandler(async (req, res) => {
   }
 });
 
-// update likes
+// update likes post
 export const likesPost = expressAsyncHandler(async (req, res) => {
   const { id } = req.params;
 
   try {
 
     // query to mysql DB 
-    const sqlMakePost = `SELECT * FROM posts WHERE id = '${id}'`
+    const sqlMakePost = selectQuerylikesPost(id);
     const post = await db.query(sqlMakePost);
 
     // data from mysql DB
@@ -190,7 +202,7 @@ export const likesPost = expressAsyncHandler(async (req, res) => {
         likes: likes || likesDB,
       }
 
-      await db.query('UPDATE posts set ? WHERE id = ?', [updatedPosttoDB, id]);
+      await db.query(updateQuerylikesPost(id, updatedPosttoDB));
       res.status(201).json({
         ok: true,
         msg: "Post updated successfully"
@@ -217,12 +229,12 @@ export const deletePost = expressAsyncHandler(async (req, res) => {
     const { id } = req.params;
 
     // select query
-    const sqlMakePost_select = `SELECT * FROM posts WHERE id = '${id}'`;
+    const sqlMakePost_select = selectQueryDeletePost(id);
     const post = await db.query(sqlMakePost_select);
 
 
     // delete query
-    const sqlMakeUser_delete = `DELETE FROM posts WHERE id = '${id}'`
+    const sqlMakeUser_delete = deleteQueryDeletePost(id);
     console.log(post);
     if (post[0]) {
       await db.query(sqlMakeUser_delete);
