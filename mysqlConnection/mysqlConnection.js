@@ -8,13 +8,15 @@ config();
 
 const { NODE_ENV } = process.env
 
-const database =  NODE_ENV === 'test' || 'depelopment'
-? databaseTest
-: databaseProduction
+const database =  NODE_ENV === 'production'
+? databaseProduction
+: databaseTest
 
+console.log(NODE_ENV);
 
 // Connect to the mysqlDB.
 const pool = createPool(database);
+console.log(database);
 
 pool.getConnection((err, connection) => {
   if (err) {

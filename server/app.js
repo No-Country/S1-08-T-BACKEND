@@ -9,12 +9,13 @@ import userRouter from '../routers/userRouter/index.js';
 import uploadRouter from '../routers/uploadRouter/index.js';
 import postRouter from '../routers/postRouter/index.js';
 
-
 //dotenv
 config();
 
 //initializations
 const app = express();
+app.use(urlencoded({extended: true }));
+app.use(json());
 app.use(cors());
 
 //Middlewares

@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node --experimental-modules backend/server",
+    "start": "cross-env NODE_ENV=production node --experimental-modules server/index.js",
     "server": "cross-env NODE_ENV=depelopment nodemon --experimental-modules server/index.js",
     "dev": "npm run server",
     "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --verbose --detectOpenHandles ",
