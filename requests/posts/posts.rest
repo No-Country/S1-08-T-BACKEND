@@ -9,7 +9,7 @@ Content-Type: application/json
 {
     "userid": "2",
     "description": "que buen postre",
-    "image": "https://picsum.photos/id/1/200/300",
+    "image": "https:https://i.picsum.photos/id/1060/5598/3732.jpg?hmac=31kU0jp5ejnPTdEt-8tAXU5sE-buU-y1W1qk_BsiUC8",
     "likes": 654
 }
 

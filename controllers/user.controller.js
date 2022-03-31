@@ -4,6 +4,21 @@ import db from '../mysqlConnection/mysqlConnection.js';
 import { generateToken } from '../util/util.js';
 import { OAuth2Client } from 'google-auth-library'
 import { client_secret_google } from '../client_secret_google.js';
+import { 
+  deleteQueryDeleteUser, 
+  intoQueryGoogleLogin, 
+  intoQueryRegister, 
+  selectQueryDeleteUser, 
+  selectQueryEditUser, 
+  selectQueryGetUsers, 
+  selectQueryGetUserToId, 
+  selectQueryGoogleLogin, 
+  selectQueryLogin, 
+  selectQueryRegister, 
+  selectQueryUpdateUser, 
+  updateQueryEditUser, 
+  updateQueryUpdateUser 
+} from '../querysSql/usersQuerys.js';
 
 
 const client = new OAuth2Client(client_secret_google.client_id);
@@ -17,7 +32,7 @@ export const register = expressAsyncHandler(async (req, res) => {
 
   try {
     //check if the user already exists
-    const sqlMakeUser_select = `SELECT * FROM users WHERE email = '${email}' || nickname = '${nickname}'`;
+    const sqlMakeUser_select = selectQueryRegister(email, nickname);
     let user = await db.query(sqlMakeUser_select);
     console.log(user);
     if (user.length > 0) {
@@ -32,7 +47,7 @@ export const register = expressAsyncHandler(async (req, res) => {
     const salt = bcrypt.genSaltSync();
     const passwd = bcrypt.hashSync(password, salt);
 
-    const sqlMakeUser_into = `INSERT INTO users ( username, password, email, nickname) VALUES ( '${username}',  '${passwd}', '${email}','${nickname}')`;
+    const sqlMakeUser_into = intoQueryRegister(username, passwd, email, nickname);
     user = await db.query(sqlMakeUser_into);
 
     // status code 201  if all goes well, return ok: true
@@ -60,7 +75,7 @@ export const register = expressAsyncHandler(async (req, res) => {
 export const login = expressAsyncHandler(async (req, res) => {
   const { email, password } = req.body;
   try {
-    const sqlMakeUser = `SELECT * FROM users WHERE email = '${email}'`;
+    const sqlMakeUser = selectQueryLogin(email);
     let user = await db.query(sqlMakeUser);
     console.log(user);
 
@@ -122,7 +137,7 @@ export const googleLogin = expressAsyncHandler(async (req, res) => {
 
       const getUserDB = async () => {
 
-        const sqlMakeUser_select = `SELECT * FROM users WHERE email = '${email}'`;
+        const sqlMakeUser_select = selectQueryGoogleLogin(email);
         return await db.query(sqlMakeUser_select);
       }
 
@@ -155,7 +170,7 @@ export const googleLogin = expressAsyncHandler(async (req, res) => {
 
         const intoUserDB = async () => {
 
-          const sqlMakeUser_into = `INSERT INTO users ( username, password, email ) VALUES ( '${name}',  '${passwd}', '${email}')`;
+          const sqlMakeUser_into = intoQueryGoogleLogin(name, passwd, email);
           await db.query(sqlMakeUser_into);
         }
 
@@ -163,7 +178,7 @@ export const googleLogin = expressAsyncHandler(async (req, res) => {
 
         const getUserDB = async () => {
 
-          const sqlMakeUser_select = `SELECT * FROM users WHERE email = '${email}'`;
+          const sqlMakeUser_select = selectQueryGoogleLogin(email);
           return await db.query(sqlMakeUser_select);
         }
 
@@ -202,7 +217,7 @@ export const googleLogin = expressAsyncHandler(async (req, res) => {
 //get users
 export const getUsers = expressAsyncHandler(async (req, res) => {
   try {
-    const sqlMakeUser = `SELECT * FROM users`
+    const sqlMakeUser = selectQueryGetUsers();
     const user = await db.query(sqlMakeUser);
 
     console.log(user);
@@ -222,7 +237,7 @@ export const getUserToId = expressAsyncHandler(async (req, res) => {
   const { id } = req.params;
 
   try {
-    const sqlMakeUser = `SELECT * FROM users WHERE id = '${id}'`
+    const sqlMakeUser = selectQueryGetUserToId(id);
     const user = await db.query(sqlMakeUser);
     console.log(user[0]);
     if (user[0]) {
@@ -265,7 +280,7 @@ export const updateUser = expressAsyncHandler(async (req, res) => {
   try {
 
     // query to mysql DB 
-    const sqlMakeUser = `SELECT * FROM users WHERE id = '${id}'`
+    const sqlMakeUser = selectQueryUpdateUser(id);
     const user = await db.query(sqlMakeUser);
 
     // data from mysql DB
@@ -287,7 +302,9 @@ export const updateUser = expressAsyncHandler(async (req, res) => {
         biography: biography || biographyDB
 
       }
-      await db.query('UPDATE users set ? WHERE id = ?', [updatedUsertoDB, id]);
+
+      //update user
+      await db.query(updateQueryUpdateUser(id, updatedUsertoDB));
       res.status(201).json({
         ok: true,
         msg: "User updated successfully",
@@ -326,7 +343,7 @@ export const editUser = expressAsyncHandler(async (req, res) => {
 
 
     // query to mysql DB 
-    const sqlMakeUser = `SELECT * FROM users WHERE id = '${id}'`
+    const sqlMakeUser = selectQueryEditUser(id);
     const user = await db.query(sqlMakeUser);
 
     // data from mysql DB
@@ -343,7 +360,8 @@ export const editUser = expressAsyncHandler(async (req, res) => {
         nickname: nickname || nicknameDB
       }
 
-      await db.query('UPDATE users set ? WHERE id = ?', [updatedUsertoDB, id]);
+      //update user
+      await db.query(updateQueryEditUser(id, updatedUsertoDB));
       res.status(201).json({
         ok: true,
         msg: "User updated successfully"
@@ -372,12 +390,12 @@ export const deleteUser = expressAsyncHandler(async (req, res) => {
     const { id } = req.params;
 
     // select query
-    const sqlMakeUser_select = `SELECT * FROM users WHERE id = '${id}'`;
+    const sqlMakeUser_select = selectQueryDeleteUser(id);
     const user = await db.query(sqlMakeUser_select);
 
 
     // delete query
-    const sqlMakeUser_delete = `DELETE FROM users WHERE id = '${id}'`
+    const sqlMakeUser_delete = deleteQueryDeleteUser(id);
     console.log(user);
     if (user[0]) {
       await db.query(sqlMakeUser_delete);
