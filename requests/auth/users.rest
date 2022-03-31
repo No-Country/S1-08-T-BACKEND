@@ -90,10 +90,10 @@ POST https://api-gout.herokuapp.com/api/users/register
 Content-Type: application/json
 
 {
-  "username": "prueba2",
-  "email": "prueba2@gmail.com",
+  "username": "prueba",
+  "email": "prueba@gmail.com",
   "password": "123456789",
-  "nickname": "prueba2"
+  "nickname": "nickprueba"
 }
 
 ### Login POST https://api-gout.herokuapp.com/api/users/login Content-Type: application/json
@@ -101,7 +101,7 @@ POST https://api-gout.herokuapp.com/api/users/login
 Content-Type: application/json
 
 {
-  "email": "cristianpalocseres@gmail.com",
+  "email": "prueba@gmail.com",
   "password": "123456789"
 }
 

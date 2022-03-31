@@ -12,7 +12,6 @@ const database =  NODE_ENV === 'production'
 ? databaseProduction
 : databaseTest
 
-console.log(NODE_ENV);
 
 // Connect to the mysqlDB.
 const pool = createPool(database);
