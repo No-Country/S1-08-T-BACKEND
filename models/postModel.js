@@ -1,4 +1,4 @@
-const post = {
+export const post = {
   id: Number,
   userid: Number,
   username: String,
@@ -7,5 +7,5 @@ const post = {
   image: String,
   category: String,
   created_at: Date,
-  likes: Number
+  likes: Number,
 }
