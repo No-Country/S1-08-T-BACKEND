@@ -18,7 +18,7 @@ const postRouter = Router()
 postRouter.post('/', isAuth, createPost)
 
 // get posts router
-postRouter.get('/', isAuth, getPosts)
+postRouter.get('/', getPosts)
 
 // get Post/id router
 postRouter.get('/:id', isAuth, getPostToId)
