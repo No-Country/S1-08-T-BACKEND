@@ -1,14 +1,13 @@
-
 export const databaseProduction = {
-    host: "",
-    user: "",
-    password: "",
-    database: ""
-};
+  host: '',
+  user: '',
+  password: '',
+  database: '',
+}
 
 export const databaseTest = {
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: ""
-};
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: '',
+}
