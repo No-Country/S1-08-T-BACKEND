@@ -1,6 +1,16 @@
 import expressAsyncHandler from 'express-async-handler';
 import db from '../mysqlConnection/mysqlConnection.js';
-import { intoQueryCreateComment, selectQueryGetComments, selectQueryGetCommentToId,selectQueryEditComment, updateQueryEditComment, selectQuerylikesComment, updateQuerylikesComment, selectQueryDeleteComment, deleteQueryDeleteComment } from '../querysSql/commentsQuerys.js';
+import { 
+  intoQueryCreateComment, 
+  selectQueryGetComments, 
+  selectQueryGetCommentToId,
+  selectQueryEditComment, 
+  updateQueryEditComment, 
+  selectQuerylikesComment, 
+  updateQuerylikesComment, 
+  selectQueryDeleteComment, 
+  deleteQueryDeleteComment 
+} from '../querysSql/commentsQuerys.js';
 
 
 
@@ -11,7 +21,7 @@ export const createComment = expressAsyncHandler(async (req, res) => {
   const { postid, userid, comment } = req.body;
 
   try {
-    const sqlMakecomment_into = intoQueryCreateComment();
+    const sqlMakecomment_into = intoQueryCreateComment( postid, userid, comment);
     await db.query(sqlMakecomment_into);
 
     // status code 201  if all goes well, return ok: true
@@ -109,13 +119,12 @@ export const editComment = expressAsyncHandler(async (req, res) => {
     // data from require body
     const { comment: commentReq } = req.body;
 
-
     if (comment[0]) {
       const updatedCommenttoDB = {
         comment: commentReq || commentDB
       }
 
-      await db.query(updateQueryEditComment(id, updatedCommenttoDB));
+      await db.query(updateQueryEditComment(), [updatedCommenttoDB, id]);
       res.status(201).json({
         ok: true,
         msg: "comment updated successfully"
@@ -158,7 +167,7 @@ export const likesComment = expressAsyncHandler(async (req, res) => {
         likes: likes || likesDB,
       }
 
-      await db.query(updateQuerylikesComment(id, updatedCommenttoDB));
+      await db.query(updateQuerylikesComment(), [updatedCommenttoDB, id]);
       res.status(201).json({
         ok: true,
         msg: "comment updated successfully"

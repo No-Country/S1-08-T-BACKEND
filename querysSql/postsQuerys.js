@@ -30,8 +30,8 @@ export const selectQueryEditPost = (id) => {
   return `SELECT * FROM posts WHERE id = '${id}'`
 }
 
-export const updateQueryEditPost = (id, updatedPosttoDB) => {
-  return 'UPDATE post s set ? WHERE id = ?', [updatedPosttoDB, id]
+export const updateQueryEditPost = () => {
+  return 'UPDATE post s set ? WHERE id = ?'
 }
 
 //update likes post
@@ -39,8 +39,8 @@ export const selectQuerylikesPost = (id) => {
   return `SELECT * FROM posts WHERE id = '${id}'`
 }
 
-export const updateQuerylikesPost = (id, updatedPosttoDB) => {
-  return 'UPDATE posts set ? WHERE id = ?', [updatedPosttoDB, id]
+export const updateQuerylikesPost = () => {
+  return 'UPDATE posts set ? WHERE id = ?'
 }
 
 //delete post

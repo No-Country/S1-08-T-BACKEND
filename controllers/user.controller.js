@@ -305,7 +305,7 @@ export const updateUser = expressAsyncHandler(async (req, res) => {
       }
 
       //update user
-      await db.query(updateQueryUpdateUser(id, updatedUsertoDB))
+      await db.query(updateQueryUpdateUser(),[updatedUsertoDB, id])
       res.status(201).json({
         ok: true,
         msg: 'User updated successfully',
@@ -360,7 +360,7 @@ export const editUser = expressAsyncHandler(async (req, res) => {
       }
 
       //update user
-      await db.query(updateQueryEditUser(id, updatedUsertoDB))
+      await db.query(updateQueryEditUser(),[updatedUsertoDB, id])
       res.status(201).json({
         ok: true,
         msg: 'User updated successfully',

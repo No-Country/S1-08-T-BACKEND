@@ -15,7 +15,7 @@ export const selectQueryGetComments = (postid) => {
 
 //get post to id 
 export const selectQueryGetCommentToId = (id) => {
-    return `SELECT  C.id, C.postid, C.userid, U.username, U.avatar, C.comment, C.posted, C.likes FROM comments as C INNER JOIN users as U WHERE  C.id = '${id}' && C.userid=U.id`
+    return `SELECT  C.id, C.postid, C.userid, U.username, U.avatar, C.comment, C.created_at, C.likes FROM comments as C INNER JOIN users as U WHERE  C.id = '${id}' && C.userid=U.id`
 }
 
 
@@ -24,8 +24,8 @@ export const selectQueryEditComment = (id) => {
     return `SELECT * FROM comments WHERE id = '${id}'`
 }
 
-export const updateQueryEditComment = (id, updatedCommenttoDB) => {
-    return 'UPDATE comments set ? WHERE id = ?', [updatedCommenttoDB, id]
+export const updateQueryEditComment = () => {
+    return 'UPDATE comments set ? WHERE id = ?'
 }
 
 //update likes post
@@ -33,8 +33,8 @@ export const selectQuerylikesComment = (id) => {
     return `SELECT * FROM comments WHERE id = '${id}'`
 }
 
-export const updateQuerylikesComment = (id, updatedCommenttoDB) => {
-    return 'UPDATE comments set ? WHERE id = ?', [updatedCommenttoDB, id]
+export const updateQuerylikesComment = () => {
+    return 'UPDATE comments set ? WHERE id = ?'
 }
 
 //delete post
