@@ -75,7 +75,7 @@ ejemplo
     {
         "username": "prueba2",
         "email": "prueba2@gmail.com",
-        "password": "987654321",
+        "password": "987206321",
         "nickname": "prueba2",
         "avatar": "https://res.cloudinary.com/dkr9yv2oa/image/upload/v1647008132/gout/wdq0wuotyluvghms6jrp.jpg",
         "backgroundImage": "https://res.cloudinary.com/dkr9yv2oa/image/upload/v16470090632/gout/j31gw9q2mxgqagiflmub.jpg",
@@ -423,7 +423,7 @@ necesita un header de autorizacion con el token del usuario logueado
 
 ### Peticion GET
 
-api-ingamer.herokuapp.com/api/posts
+api-gout.herokuapp.com/api/posts
 
 Respuesta exitosa (200 OK)
 
@@ -439,18 +439,17 @@ ejemplo
 "description": "description",
 "image": "https://picsum.photos/id/1/200/300",
 "posted": "2022-02-25T22:07:43.000Z",
-"likes": 654
+"likes": 206
 },
 {
 "id": 2,
 "userid": 3,
 "username": "prueba2",
 "avatar": null,
-"title": "Mira mi ultima jugada",
-"description": "Estaba jugando con @juanito y de repente se me aparecio esto:",
+"description": "superr",
 "image": "https://picsum.photos/id/1/200/300",
 "posted": "2022-02-25T02:35:35.000Z",
-"likes": 654
+"likes": 206
 }
 ]
 
@@ -474,9 +473,6 @@ nombre del ussuario "prueba"
 avatar: string  
 imagen, foto del usuario
 
-lilBio: string
-encabezado de la publicacion
-
 description: string
 leyenda de la publicacion
 
@@ -494,19 +490,19 @@ numero de megustas de cada publicacion
 
 ## POSTS/ID ENDPOINT
 
-devuelve un objetos con todos los datos del posts
+devuelve un objeto con todos los datos del posts
 
 necesita un header de autorizacion con el token del usuario logueado
 
 ### Peticion GET
 
-api-ingamer.herokuapp.com/api/posts/:id
+api-gout.herokuapp.com/api/posts/:id
 
 Respuesta exitosa (200 OK)
 
 ejemplo
 
-let url = api-ingamer.herokuapp.com/api/posts/2";
+let url = api-gout.herokuapp.com/api/posts/2";
 
 fetch(url, {
 method: 'GET',
@@ -522,16 +518,13 @@ Respuesta exitosa (200 OK)
 
 {
   "id": 2,
-  "user": {
   "userid": 3,
-    "username": "prueba2",
-    "avatar": null
-  },
-  "title": "update title",
+  "username": "prueba2",
+  "avatar": null
   "description": "update description",
   "image": "https://picsum.photos/id/1/200/300",
   "posted": "2022-02-25T22:07:43.000Z",
-  "likes": 654
+  "likes": 206
 }
 
 ## POSTS/USERPOSTS/ID ENDPOINT
@@ -540,11 +533,11 @@ devuelve un objetos con todos los datos del posts por usuario
 
 ### Peticion GET
 
-api-ingamer.herokuapp.com/api/posts/userPosts/:id
+api-gout.herokuapp.com/api/posts/userPosts/:userid
 
 ejemplo
 
-let url = api-ingamer.herokuapp.com/api/posts/userPosts/2";
+let url = api-gout.herokuapp.com/api/posts/userPosts/2";
 
 fetch(url, {
 method: 'GET',
@@ -562,11 +555,10 @@ Respuesta exitosa (200 OK)
 "userid": 3,
 "username": "prueba",
 "avatar": null,
-"title": "title",
 "description": "description",
 "image": "https://picsum.photos/id/1/200/300",
 "posted": "2022-02-25T22:07:43.000Z",
-"likes": 654
+"likes": 206
 },
 
 ## POSTS post ENDPOINT
@@ -574,25 +566,23 @@ Respuesta exitosa (200 OK)
 para utilizar este endpoint se necesita enviar un objeto contenido con los datos requeridos por la base de datos:
 
 userid: number
-title: string
 description: string
 image: string
 likes: number
 
 ### Peticion POST
 
-api-ingamer.herokuapp.com/api/posts
+api-gout.herokuapp.com/api/posts
 
 ejemplo
 
-let url = "api-ingamer.herokuapp.com/api/posts";
+let url = "api-gout.herokuapp.com/api/posts";
 
 let data = {
 "userid": "3",
-"title": "Mira mi ultima jugada",
-"description": "Estaba jugando con @juanito y de repente se me aparecio esto:",
+"description": "que ricooo",
 "image": "https://picsum.photos/id/1/200/300",
-"likes": 654
+"likes": 206
 }
 
 fetch(url, {
@@ -617,20 +607,18 @@ msg: "Post created"
 
 para utilizar este endpoint se necesita especificar en el id en el end point y enviar un objeto contenido con los datos requeridos por la base de datos:
 
-title: string
 description: string
 
 ### Peticion POST
 
-api-ingamer.herokuapp.com/api/posts/edit/:id
+api-gout.herokuapp.com/api/posts/edit/:id
 
 ejemplo
 
-let url = "api-ingamer.herokuapp.com/api/posts/edit/2";
+let url = "api-gout.herokuapp.com/api/posts/edit/2";
 
 let data = {
-"title": "Mira mi ultima jugada",
-"description": "Estaba jugando con @juanito y de repente se me aparecio esto:",
+"description": "sabrosooo",
 }
 
 fetch(url, {
@@ -659,11 +647,11 @@ necesita un header de autorizacion con el token del usuario logueado
 
 ### Peticion PUT
 
-api-ingamer.herokuapp.com/api/posts/delete/id
+api-gout.herokuapp.com/api/posts/delete/id
 
 ejemplo
 
-let url = "api-ingamer.herokuapp.com/api/posts/delete/2";
+let url = "api-gout.herokuapp.com/api/posts/delete/2";
 
 fetch(url, {
 method: 'DELETE',
