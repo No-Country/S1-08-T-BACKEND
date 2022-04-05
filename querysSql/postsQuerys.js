@@ -15,7 +15,7 @@ export const selectQueryGetposts = () => {
   return `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.created_at, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE P.userid=U.id`
 }
 
-//get to id post
+//get post to id 
 export const selectQueryGetPostToId = (id) => {
   return `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.created_at, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE  P.id = '${id}' && P.userid=U.id`
 }

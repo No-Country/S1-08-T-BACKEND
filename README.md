@@ -412,3 +412,271 @@ Respuesta fallida (500 )
 ok: false,
 msg: "An error has arisen in the process, please review"
 }
+
+## POSTS ENDPOINT
+
+API posts devuelve un array de objetos con todos los datos de cada posts que han publicado los ususarios
+
+necesita un header de autorizacion con el token del usuario logueado
+
+## URL de Posts
+
+### Peticion GET
+
+api-ingamer.herokuapp.com/api/posts
+
+Respuesta exitosa (200 OK)
+
+ejemplo
+
+[
+{
+"id": 1,
+"userid": 3,
+"username": "prueba",
+"avatar": null,
+"title": "title",
+"description": "description",
+"image": "https://picsum.photos/id/1/200/300",
+"posted": "2022-02-25T22:07:43.000Z",
+"likes": 654
+},
+{
+"id": 2,
+"userid": 3,
+"username": "prueba2",
+"avatar": null,
+"title": "Mira mi ultima jugada",
+"description": "Estaba jugando con @juanito y de repente se me aparecio esto:",
+"image": "https://picsum.photos/id/1/200/300",
+"posted": "2022-02-25T02:35:35.000Z",
+"likes": 654
+}
+]
+
+## Data:
+
+## Posts object
+
+Estos objetos contienen una variedad de información referente a los posts publicados
+
+Propiedad Ejemplo
+
+id: number
+id único de este usuario "33"
+
+userid: number
+userid llave forania del usuario con su publicacion
+
+username: string
+nombre del ussuario "prueba"
+
+avatar: string  
+imagen, foto del usuario
+
+lilBio: string
+encabezado de la publicacion
+
+description: string
+leyenda de la publicacion
+
+image: string
+foto publicada
+
+created_at: date
+hora de publicacion
+
+category: string
+la categoria a la que pertenece la publicacion
+
+likes: number
+numero de megustas de cada publicacion
+
+## POSTS/ID ENDPOINT
+
+devuelve un objetos con todos los datos del posts
+
+necesita un header de autorizacion con el token del usuario logueado
+
+### Peticion GET
+
+api-ingamer.herokuapp.com/api/posts/:id
+
+Respuesta exitosa (200 OK)
+
+ejemplo
+
+let url = api-ingamer.herokuapp.com/api/posts/2";
+
+fetch(url, {
+method: 'GET',
+headers:{
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (200 OK)
+
+
+{
+  "id": 2,
+  "user": {
+  "userid": 3,
+    "username": "prueba2",
+    "avatar": null
+  },
+  "title": "update title",
+  "description": "update description",
+  "image": "https://picsum.photos/id/1/200/300",
+  "posted": "2022-02-25T22:07:43.000Z",
+  "likes": 654
+}
+
+## POSTS/USERPOSTS/ID ENDPOINT
+
+devuelve un objetos con todos los datos del posts por usuario
+
+### Peticion GET
+
+api-ingamer.herokuapp.com/api/posts/userPosts/:id
+
+ejemplo
+
+let url = api-ingamer.herokuapp.com/api/posts/userPosts/2";
+
+fetch(url, {
+method: 'GET',
+headers:{
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (200 OK)
+
+{
+"id": 1,
+"userid": 3,
+"username": "prueba",
+"avatar": null,
+"title": "title",
+"description": "description",
+"image": "https://picsum.photos/id/1/200/300",
+"posted": "2022-02-25T22:07:43.000Z",
+"likes": 654
+},
+
+## POSTS post ENDPOINT
+
+para utilizar este endpoint se necesita enviar un objeto contenido con los datos requeridos por la base de datos:
+
+userid: number
+title: string
+description: string
+image: string
+likes: number
+
+### Peticion POST
+
+api-ingamer.herokuapp.com/api/posts
+
+ejemplo
+
+let url = "api-ingamer.herokuapp.com/api/posts";
+
+let data = {
+"userid": "3",
+"title": "Mira mi ultima jugada",
+"description": "Estaba jugando con @juanito y de repente se me aparecio esto:",
+"image": "https://picsum.photos/id/1/200/300",
+"likes": 654
+}
+
+fetch(url, {
+method: 'POST',
+body: JSON.stringify(data),
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+ok: true,
+msg: "Post created"
+}
+
+## POSTS/EDIT/ID ENDPOINT
+
+para utilizar este endpoint se necesita especificar en el id en el end point y enviar un objeto contenido con los datos requeridos por la base de datos:
+
+title: string
+description: string
+
+### Peticion POST
+
+api-ingamer.herokuapp.com/api/posts/edit/:id
+
+ejemplo
+
+let url = "api-ingamer.herokuapp.com/api/posts/edit/2";
+
+let data = {
+"title": "Mira mi ultima jugada",
+"description": "Estaba jugando con @juanito y de repente se me aparecio esto:",
+}
+
+fetch(url, {
+method: 'PUT',
+body: JSON.stringify(data),
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+ok: true,
+msg: "Post created"
+}
+
+## POSTS/DELETE/ID ENDPOINT
+
+para utilizar este endpoint se necesita especificar en el id en el end point
+
+necesita un header de autorizacion con el token del usuario logueado
+
+### Peticion PUT
+
+api-ingamer.herokuapp.com/api/posts/delete/id
+
+ejemplo
+
+let url = "api-ingamer.herokuapp.com/api/posts/delete/2";
+
+fetch(url, {
+method: 'DELETE',
+headers:{
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+ok: true,
+msg: "Posts removed successfully"
+}
