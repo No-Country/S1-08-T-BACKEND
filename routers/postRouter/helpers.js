@@ -9,8 +9,7 @@ export const api = supertest(app)
 //create post
 export const newPost = {
   userid: 1,
-  title: 'Mira mi ultima jugada',
-  description: 'Estaba jugando con @juanito y de repente se me aparecio esto:',
+  description: 'que rico',
   image: 'https://picsum.photos/id/1/200/300',
   likes: 654,
 }

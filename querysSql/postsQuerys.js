@@ -15,7 +15,7 @@ export const selectQueryGetposts = () => {
   return `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.created_at, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE P.userid=U.id`
 }
 
-//get to id post
+//get post to id 
 export const selectQueryGetPostToId = (id) => {
   return `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.created_at, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE  P.id = '${id}' && P.userid=U.id`
 }
@@ -30,8 +30,8 @@ export const selectQueryEditPost = (id) => {
   return `SELECT * FROM posts WHERE id = '${id}'`
 }
 
-export const updateQueryEditPost = (id, updatedPosttoDB) => {
-  return 'UPDATE post s set ? WHERE id = ?', [updatedPosttoDB, id]
+export const updateQueryEditPost = () => {
+  return 'UPDATE post s set ? WHERE id = ?'
 }
 
 //update likes post
@@ -39,8 +39,8 @@ export const selectQuerylikesPost = (id) => {
   return `SELECT * FROM posts WHERE id = '${id}'`
 }
 
-export const updateQuerylikesPost = (id, updatedPosttoDB) => {
-  return 'UPDATE posts set ? WHERE id = ?', [updatedPosttoDB, id]
+export const updateQuerylikesPost = () => {
+  return 'UPDATE posts set ? WHERE id = ?'
 }
 
 //delete post

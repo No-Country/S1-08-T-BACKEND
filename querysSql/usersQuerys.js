@@ -36,8 +36,8 @@ export const selectQueryUpdateUser = (id) => {
   return `SELECT * FROM users WHERE id = '${id}'`
 }
 
-export const updateQueryUpdateUser = (id, updatedUsertoDB) => {
-  return 'UPDATE users set ? WHERE id = ?', [updatedUsertoDB, id]
+export const updateQueryUpdateUser = () => {
+  return 'UPDATE users set ? WHERE id = ?'
 }
 
 //edite user
@@ -45,8 +45,8 @@ export const selectQueryEditUser = (id) => {
   return `SELECT * FROM users WHERE id = '${id}'`
 }
 
-export const updateQueryEditUser = (id, updatedUsertoDB) => {
-  return 'UPDATE users set ? WHERE id = ?', [updatedUsertoDB, id]
+export const updateQueryEditUser = () => {
+  return 'UPDATE users set ? WHERE id = ?'
 }
 
 //delete user

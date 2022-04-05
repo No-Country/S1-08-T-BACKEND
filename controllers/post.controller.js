@@ -160,7 +160,7 @@ export const editPost = expressAsyncHandler(async (req, res) => {
         description: description || descriptionDB,
       }
 
-      await db.query(updateQueryEditPost(id, updatedPosttoDB))
+      await db.query(updateQueryEditPost(), [updatedPosttoDB, id])
       res.status(201).json({
         ok: true,
         msg: 'Post updated successfully',
@@ -200,7 +200,7 @@ export const likesPost = expressAsyncHandler(async (req, res) => {
         likes: likes || likesDB,
       }
 
-      await db.query(updateQuerylikesPost(id, updatedPosttoDB))
+      await db.query(updateQuerylikesPost(), [updatedPosttoDB, id])
       res.status(201).json({
         ok: true,
         msg: 'Post updated successfully',
