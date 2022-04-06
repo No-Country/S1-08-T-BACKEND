@@ -223,7 +223,7 @@ username: usernameDB,
 emial: emailDB,
 token
 }
-
+    
 Respuesta fallida (400)
 
 {
