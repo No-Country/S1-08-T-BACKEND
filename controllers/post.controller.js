@@ -156,7 +156,7 @@ export const editPost = expressAsyncHandler(async (req, res) => {
 
     if (post[0]) {
       const updatedPosttoDB = {
-        title: category || categoryDB,
+        category: category || categoryDB,
         description: description || descriptionDB,
       }
 
