@@ -1,11 +1,13 @@
 import express from 'express'
 import {
   uploadAvatar,
-  uploadBackgroundImage,
   uploaderAvatar,
+  uploadBackgroundImage,
   uploaderBackgroundImage,
-  uploaderPosts,
-  uploadPosts,
+  uploadPostsImage,
+  uploaderPostsImage,
+  uploadPostsVideo,
+  uploaderPostsVideo,
 } from '../../controllers/upload.controller.js'
 import { isAuth } from '../../util/util.js'
 
@@ -27,12 +29,20 @@ uploadRouter.post(
   uploaderBackgroundImage
 )
 
-//Posts
+//Posts Image
 uploadRouter.post(
-  '/posts',
+  '/postsImage',
   isAuth,
-  uploadPosts.single('imagenPosts'),
-  uploaderPosts
+  uploadPostsImage.single('imagenPosts'),
+  uploaderPostsImage
+)
+
+//Posts Video
+uploadRouter.post(
+  '/postsVideo',
+  isAuth,
+  uploadPostsVideo.single('videoPosts'),
+  uploaderPostsVideo
 )
 
 export default uploadRouter

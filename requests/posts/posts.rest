@@ -71,8 +71,8 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLC
 
 {
     "userid": "2",
-    "description": "un buen chorizo",
-    "image": "https://p4.wallpaperbetter.com/wallpaper/596/974/343/food-grilled-dish-sausage-wallpaper-preview.jpg",
+    "description": "food",
+    "image": "https://media.istockphoto.com/photos/selection-of-american-food-picture-id931308812?k=20&m=931308812&s=612x612&w=0&h=Tudia4RSCvfpWZhli0ehScrzeCtbwvTqB9BZaCta_qA=",
     "likes": 654
 }
 
@@ -106,7 +106,7 @@ Content-Type: application/json
 Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
 
 {
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvUQM4v_GZtoi5FMUPOe-mfIkR7Kb00XK1iQ&usqp=CAU"
+    "description": "esta es la receta de locro"
 
 }
 

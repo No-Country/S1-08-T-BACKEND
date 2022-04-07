@@ -668,3 +668,563 @@ Respuesta exitosa (201 OK)
 ok: true,
 msg: "Posts removed successfully"
 }
+
+## UPLOADS ENDPOINT
+
+API uploads devuelve un string de la url de la imagen o video que haya guardado el usuario
+
+necesita un header de autorizacion con el token del usuario logueado
+
+## URL de uploads
+
+
+
+## UPLOADS/AVATAR ENDPOINT
+
+### Peticion POST
+
+api-gout.herokuapp.com/api/uploads/avatar
+
+ejemplo utilizando react en el frontend:
+
+const [loadingUpload, setLoadingUpload] = useState(false);
+const [errorUpload, setErrorUpload] = useState('');
+
+const userSignin = useSelector((state) => state.userSignin);
+
+const { userInfo } = userSignin;
+
+// upload images local
+const uploadFileHandler = async (e) => {
+const file = e.target.files[0];
+
+    const bodyFormData = new FormData();
+    bodyFormData.append('imagenAvatar', file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await Axios.post('/api/uploads/avatar', bodyFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setImagen(data);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+
+};
+
+    <label htmlFor="imagen">Imagen:</label>
+    <input
+      id="imagen"
+      type="text"
+      placeholder="Imagen"
+      value={imagen}
+      onChange={(e) => setImagen(e.target.value)}
+    ></input>
+
+Respuesta exitosa (200 OK)
+
+ejemplo:
+
+Local
+https://api-gout.herokuapp.com/uploads/avatar/1646405965253.jpg
+
+Cloudinary
+https://res.cloudinary.com/dkr9yv2oa/image/upload/v1648742027/gout/kx8pnwtvl9p0ixoblc36.png
+
+esta url es la que se envia en el campo de avatar para guardarla en la base de datos
+
+
+
+## UPLOADS/BACKGROUNDIMAGE ENDPOINT
+
+### Peticion POST
+
+api-gout.herokuapp.com/api/uploads/backgroundImage
+
+ejemplo utilizando react en el frontend:
+
+const [loadingUpload, setLoadingUpload] = useState(false);
+const [errorUpload, setErrorUpload] = useState('');
+
+const userSignin = useSelector((state) => state.userSignin);
+
+const { userInfo } = userSignin;
+
+// upload images local
+const uploadFileHandler = async (e) => {
+const file = e.target.files[0];
+
+    const bodyFormData = new FormData();
+    bodyFormData.append('imagenBackgroundImage', file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await Axios.post('/api/uploads/backgroundImage', bodyFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setImagen(data);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+
+};
+
+    <label htmlFor="imagen">Imagen:</label>
+    <input
+      id="imagen"
+      type="text"
+      placeholder="Imagen"
+      value={imagen}
+      onChange={(e) => setImagen(e.target.value)}
+    ></input>
+
+Respuesta exitosa (200 OK)
+
+ejemplo:
+
+Local
+https://api-gout.herokuapp.com/uploads/backgroundImage/1646405965253.jpg
+
+Cloudinary
+https://res.cloudinary.com/dkr9yv2oa/image/upload/v1648742027/gout/kx8pnwtvl9p0ixoblc36.png
+
+esta url es la que se envia en el campo de backgroundImage para guardarla en la base de datos
+
+
+
+
+
+## UPLOADS/POSTSIMAGE ENDPOINT
+
+### Peticion POST
+
+api-gout.herokuapp.com/api/uploads/postsImage
+
+ejemplo utilizando react en el frontend:
+
+const [loadingUpload, setLoadingUpload] = useState(false);
+const [errorUpload, setErrorUpload] = useState('');
+
+const authUser = useSelector((state) => state.authUser);
+
+const { user, token, isAuthenticated } = authUser;
+
+
+//funcion para visualizar la imagen previamente
+const [previewSource, setPreviewSource] = useState('');
+const previewFile = (file) =>{
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onloadend = () =>{
+    setPreviewSource(reader.result)
+  }
+}
+
+// upload images
+const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+
+    //previsualiza la imagen
+    previewFile(file);
+
+
+    const bodyFormData = new FormData();
+    bodyFormData.append('imagenPosts', file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await Axios.post('https://api-gout.herokuapp.com/api/uploads/postsImage', bodyFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setImagen(data);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+
+};
+
+//imput para cargar la imagen
+
+    <label htmlFor="imagen">Imagen:</label>
+    <input
+      id="imagen"
+      type="text"
+      placeholder="Imagen"
+      value={imagen}
+      onChange={(e) => setImagen(e.target.value)}
+    ></input>
+
+// para poder previsualizar la imagen antes de guardar
+
+    {previewSource && (
+      <img src={previewSource} alt="chosen" style={{width: '10rem', height: '10rem'}}></img>
+    )}
+
+
+// manejo de errores al subir la imagen
+
+    {errorUpload && (
+      <div>{errorUpload}</div>
+    )}
+Respuesta exitosa (200 OK)
+
+ejemplo:
+
+Local
+https://api-gout.herokuapp.com/uploads/postsImage/1646405965253.jpg
+
+Cloudinary
+https://res.cloudinary.com/dkr9yv2oa/image/upload/v1648742027/gout/kx8pnwtvl9p0ixoblc36.png
+
+esta url es la que se envia en el campo de image en las publicaciones para guardarla en la base de datos
+
+## UPLOADS/POSTSVIDEO ENDPOINT
+
+### Peticion POST
+
+api-gout.herokuapp.com/api/uploads/postsVideo
+
+ejemplo utilizando react en el frontend:
+
+const [loadingUpload, setLoadingUpload] = useState(false);
+const [errorUpload, setErrorUpload] = useState('');
+
+const authUser = useSelector((state) => state.authUser);
+
+const { user, token, isAuthenticated } = authUser;
+
+//funcion para visualizar la imagen previamente
+
+
+const [previewSource, setPreviewSource] = useState('');
+const previewFile = (file) =>{
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onloadend = () =>{
+    setPreviewSource(reader.result)
+  }
+}
+si esta no te resulta crea una funcion que te pernita visualizar los videos que subira el usuario
+
+
+// upload images
+const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+
+    //previsualiza la imagen
+    previewFile(file);
+
+
+    const bodyFormData = new FormData();
+    bodyFormData.append('videoPosts', file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await Axios.post('https://api-gout.herokuapp.com/api/uploads/postsVideo', bodyFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setImagen(data);
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+
+};
+
+//imput para cargar la imagen
+
+    <label htmlFor="imagen">Imagen:</label>
+    <input
+      id="imagen"
+      type="text"
+      placeholder="Imagen"
+      value={imagen}
+      onChange={(e) => setImagen(e.target.value)}
+    ></input>
+
+// para poder previsualizar el video antes de guardar
+
+    {previewSource && (
+      <video src={previewSource} alt="chosen" style={{width: '10rem', height: '10rem'}}></video>
+    )}
+
+
+// manejo de errores al subir el video
+
+    {errorUpload && (
+      <div>{errorUpload}</div>
+    )}
+Respuesta exitosa (200 OK)
+
+ejemplo:
+
+Local
+https://api-gout.herokuapp.com/uploads/postsVideo/1646405965253.jpg
+
+Cloudinary
+https://res.cloudinary.com/dkr9yv2oa/video/upload/v1648742027/gout/kx8pnwtvl9p0ixoblc36.png
+
+esta url es la que se envia en el campo de video en las publicaciones para guardarla en la base de datos
+
+
+
+## COMMENTS ENDPOINT
+
+para utilizar este endpoint se necesita enviar un objeto contenido con los datos requeridos por la base de datos:
+
+postid:  string, es el id de la publicacion a la que se esta comentando
+userid: string,  es el id del usuario logueado
+comment: string, es lo que el usuario comenta en la publicaion
+
+
+
+
+### Peticion POST
+
+api-gout.herokuapp.com/api/comments
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/comments";
+
+let data = {
+  "postid": 10,
+  "userid": 3
+  "comment": "que ricooo"
+}
+
+fetch(url, {
+method: 'POST',
+body: JSON.stringify(data),
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+ok: true,
+msg: "comment created"
+}
+
+
+## COMMENTS/COMMENTTOPOSTS/:POSTID ENDPOINT
+
+para utilizar este endpoint se necesita enviar id de el comentario en el parametro
+
+id: Numbrer
+
+### Peticion GET
+
+api-gout.herokuapp.com/api/commentToPosts/:id
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/comments/commentToPosts/10";
+
+fetch(url, {
+method: 'GET',
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+[
+    {
+        "id": 4,
+        "postid": 10,
+        "userid": 3,
+        "username": "updateImagen",
+        "avatar": "https://i.pravatar.cc/300",
+        "comment": "que ricooo",
+        "posted": "2022-03-10T07:58:42.000Z",
+        "likes": null
+    },
+    {
+        "id": 5,
+        "postid": 10,
+        "userid": 3,
+        "username": "updateImagen",
+        "avatar": "https://i.pravatar.cc/300",
+        "comment": "se vee geniall",
+        "posted": "2022-03-10T08:02:56.000Z",
+        "likes": null
+    },
+    {
+        "id": 8,
+        "postid": 10,
+        "userid": 4,
+        "username": "prueba3",
+        "avatar": null,
+        "comment": "una deliciaaa",
+        "posted": "2022-03-10T08:23:53.000Z",
+        "likes": null
+    }
+]
+
+
+## COMMENTS/:ID ENDPOINT
+
+para utilizar este endpoint se necesita enviar id de el comentario en el parametro
+
+id: Numbrer
+
+### Peticion GET
+
+api-gout.herokuapp.com/api/comments/:id
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/comments/4";
+
+fetch(url, {
+method: 'GET',
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+    id: 8,
+    postid: 10,
+    userid: 4,
+    username: 'prueba3',
+    avatar: null,
+    comment: 'una deliciaaa',
+    posted: 2022-03-10T08:23:53.000Z,
+    likes: 45
+}
+
+
+## COMMENTS/EDIT/:ID ENDPOINT
+
+para utilizar este endpoint se necesita tener en cuenta el id del comentario  y  enviar un objeto contenido con los datos requeridos por la base de datos:
+
+comment: string, es lo que el usuario comenta en la publicaion
+
+### Peticion PUT
+
+api-gout.herokuapp.com/api/comments/edit/:id
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/comments/edit/2";
+
+let data = {
+  "comment": "superrr ricooo"
+}
+
+fetch(url, {
+method: 'PUT',
+body: JSON.stringify(data),
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+ok: true,
+msg: "comment updated"
+}
+
+## comments/likes/:id ENDPOINT
+
+para utilizar este endpoint se necesita tener en cuenta el id del comentario  y  enviar un objeto contenido con los datos requeridos por la base de datos:
+
+likes: number, es el numero de me gusta que tiene la publicacion
+
+### Peticion PUT
+
+api-gout.herokuapp.com/api/comments/likes/:id
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/comments/likes/2";
+
+let data = {
+  "likes": 47
+}
+
+fetch(url, {
+method: 'PUT',
+body: JSON.stringify(data),
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+ok: true,
+msg: "likes comment updated"
+}
+
+## comments/delete/:id ENDPOINT
+
+para utilizar este endpoint se necesita enviar id de follower en el parametro
+
+id: Number
+
+### Peticion DETELE
+
+api-gout.herokuapp.com/api/comments/delete/:id
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/comments/delete/2";
+
+fetch(url, {
+method: 'DETELE',
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+  ok: true,
+  msg: "comment removed successfully"
+}
