@@ -97,7 +97,7 @@ export const uploaderPostsImage = expressAsyncHandler(async (req, res) => {
     //link image local
     // res.send(`https://api-gout.herokuapp.com/${req.file.path}`);
 
-    // await fs.unlink(req.file.path)
+    await fs.unlink(req.file.path)
   } catch (error) {
     console.log(error)
     res.status(500).json({
@@ -136,7 +136,7 @@ export const uploaderPostsVideo = expressAsyncHandler(async (req, res) => {
     //link image local
     // res.send(`https://api-gout.herokuapp.com/${req.file.path}`);
 
-    // await fs.unlink(req.file.path)
+    await fs.unlink(req.file.path)
   } catch (error) {
     console.log(error)
     res.status(500).json({
