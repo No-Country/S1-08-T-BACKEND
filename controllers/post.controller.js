@@ -15,15 +15,16 @@ import {
 
 //create post
 export const createPost = expressAsyncHandler(async (req, res) => {
-  const { userid, description, image, category, likes } = req.body
+  const { userid, title, description, image, video, category } = req.body
 
   try {
     const sqlMakePost_into = intoQueryCreatePost(
       userid,
+      title,
       description,
       image,
+      video,
       category,
-      likes
     )
     await db.query(sqlMakePost_into)
 

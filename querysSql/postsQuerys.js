@@ -2,13 +2,15 @@
 
 export const intoQueryCreatePost = (
   userid,
+  title,
   description,
   image,
-  category,
-  likes
+  video,
+  category
 ) => {
-  return `INSERT INTO posts ( userid, description, image, category, likes) VALUES ( '${userid}', '${description}','${image}','${category}','${likes}')`
+  return `INSERT INTO posts ( userid,title, description, image,video, category, likes) VALUES ( '${userid}', '${title}',  '${description}','${image}', '${video}', '${category}')`
 }
+
 
 //get posts
 export const selectQueryGetposts = () => {
