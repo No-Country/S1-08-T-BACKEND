@@ -8,7 +8,7 @@ export const intoQueryCreatePost = (
   video,
   category
 ) => {
-  return `INSERT INTO posts ( userid,title, description, image,video, category, likes) VALUES ( '${userid}', '${title}',  '${description}','${image}', '${video}', '${category}')`
+  return `INSERT INTO posts ( userid,title, description, image,video, category) VALUES ( '${userid}', '${title}',  '${description}','${image}', '${video}', '${category}')`
 }
 
 
