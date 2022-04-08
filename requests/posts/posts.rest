@@ -10,7 +10,7 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLC
 
 {
     "userid": "2",
-    "description": "que buen postre",
+    "description": " Les comparto esta receta de locro que explica muy bien los pasos a seguir. Ideal para principiantes.",
     "image": "https:https://i.picsum.photos/id/1060/5598/3732.jpg?hmac=31kU0jp5ejnPTdEt-8tAXU5sE-buU-y1W1qk_BsiUC8",
     "likes": 654
 }
@@ -54,3 +54,64 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLC
 
 
 DELETE http://localhost:8000/api/posts/delete/4
+
+
+
+### url remota
+
+
+### posts POST http://api-gout.herokuapp.com/api/posts Content-Type: application/json
+
+
+
+POST http://api-gout.herokuapp.com/api/posts
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+
+{
+    "userid": "2",
+    "description": "food",
+    "image": "https://media.istockphoto.com/photos/selection-of-american-food-picture-id931308812?k=20&m=931308812&s=612x612&w=0&h=Tudia4RSCvfpWZhli0ehScrzeCtbwvTqB9BZaCta_qA=",
+    "likes": 654
+}
+
+
+### posts GET http://api-gout.herokuapp.com/api/posts Content-Type: application/json
+
+
+
+GET http://api-gout.herokuapp.com/api/posts
+
+
+### post to id GET http://api-gout.herokuapp.com/api/posts Content-Type: application/json
+
+
+
+GET http://api-gout.herokuapp.com/api/posts/2
+
+
+### all user posts to id GET http://api-gout.herokuapp.com/api/posts Content-Type: application/json
+
+
+
+GET http://api-gout.herokuapp.com/api/posts/userPosts/3
+
+
+
+### edit user put http://api-gout.herokuapp.com/api/users/profile Content-Type: application/json
+
+PUT http://api-gout.herokuapp.com/api/posts/edit/3
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+{
+    "description": "esta es la receta de locro"
+
+}
+
+### post  DELETE http://api-gout.herokuapp.com/api/users/delete/:id 
+
+
+
+DELETE http://api-gout.herokuapp.com/api/posts/delete/4
