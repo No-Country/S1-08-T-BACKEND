@@ -34,7 +34,7 @@ export const uploaderAvatar = expressAsyncHandler(async (req, res) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -66,7 +66,7 @@ export const uploaderBackgroundImage = expressAsyncHandler(async (req, res) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -102,7 +102,7 @@ export const uploaderPostsImage = expressAsyncHandler(async (req, res) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -141,7 +141,7 @@ export const uploaderPostsVideo = expressAsyncHandler(async (req, res) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })

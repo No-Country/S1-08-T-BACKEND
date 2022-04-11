@@ -27,14 +27,14 @@ export const createComment = expressAsyncHandler(async (req, res) => {
     // status code 201  if all goes well, return ok: true
     res.status(201).json({
       ok: true,
-      msg: "comment created"
+      msg: "Comentario creado correctamente",
     });
 
   } catch (error) {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "An error has arisen in the process, please review"
+      msg: "Un error ha ocurrido, por favor revise"
     });
   }
 
@@ -56,7 +56,7 @@ export const getComments = expressAsyncHandler(async (req, res) => {
     } else {
       res.status(400).json({
         ok: false,
-        msg: "No comments"
+        msg: "No hay comentarios",
       });
     }
 
@@ -64,7 +64,7 @@ export const getComments = expressAsyncHandler(async (req, res) => {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "An error has arisen in the process, please review"
+      msg: "Un error ha ocurrido, por favor revise"
     });
   }
 })
@@ -86,14 +86,14 @@ export const getCommentToId = expressAsyncHandler(async (req, res) => {
     } else {
       res.status(404).json({
         ok: false,
-        msg: "comment not found"
+        msg: "Comentario no encontrado",
       });
     }
   } catch (error) {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "An error has arisen in the process, please review"
+      msg: "Un error ha ocurrido, por favor revise"
     });
   }
 });
@@ -127,19 +127,19 @@ export const editComment = expressAsyncHandler(async (req, res) => {
       await db.query(updateQueryEditComment(), [updatedCommenttoDB, id]);
       res.status(201).json({
         ok: true,
-        msg: "comment updated successfully"
+        msg: "Comentario actualizado correctamente",
       });
     } else {
       res.status(404).json({
         ok: false,
-        msg: "comment not found"
+        msg: "Comentario no encontrado",
       });
     };
   } catch (error) {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "An error has arisen in the process, please review"
+      msg: "Un error ha ocurrido, por favor revise"
     });
   }
 });
@@ -170,19 +170,19 @@ export const likesComment = expressAsyncHandler(async (req, res) => {
       await db.query(updateQuerylikesComment(), [updatedCommenttoDB, id]);
       res.status(201).json({
         ok: true,
-        msg: "comment updated successfully"
+        msg: "Likes actualizado correctamente",
       });
     } else {
       res.status(404).json({
         ok: false,
-        msg: "comment not found"
+        msg: "Comentario no encontrado",
       });
     };
   } catch (error) {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "An error has arisen in the process, please review"
+      msg: "Un error ha ocurrido, por favor revise"
     });
   }
 });
@@ -205,19 +205,19 @@ export const deleteComment = expressAsyncHandler(async (req, res) => {
       await db.query(sqlMakeUser_delete);
       res.status(201).json({
         ok: true,
-        msg: "comment removed successfully"
+        msg: "Comentario eliminado correctamente",
       });
     } else {
       res.status(404).json({
         ok: false,
-        msg: "comment not exist"
+        msg: "Comentario no encontrado",
       });
     }
   } catch (error) {
     console.log(error);
     res.status(500).json({
       ok: false,
-      msg: "An error has arisen in the process, please review"
+      msg: "Un error ha ocurrido, por favor revise"
     });
   }
 });
