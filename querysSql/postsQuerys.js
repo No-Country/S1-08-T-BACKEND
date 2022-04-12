@@ -11,13 +11,12 @@ export const intoQueryCreatePost = (
   return `INSERT INTO posts ( userid,title, description, image,video, category) VALUES ( '${userid}', '${title}',  '${description}','${image}', '${video}', '${category}')`
 }
 
-
 //get posts
 export const selectQueryGetposts = () => {
   return `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.created_at, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE P.userid=U.id`
 }
 
-//get post to id 
+//get post to id
 export const selectQueryGetPostToId = (id) => {
   return `SELECT  P.id, P.userid, U.username, U.avatar, P.description, P.image, P.created_at, P.category, P.likes FROM posts as P INNER JOIN users as U WHERE  P.id = '${id}' && P.userid=U.id`
 }

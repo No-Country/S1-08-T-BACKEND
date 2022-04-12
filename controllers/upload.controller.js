@@ -71,8 +71,6 @@ export const uploaderBackgroundImage = expressAsyncHandler(async (req, res) => {
   }
 })
 
-
-
 //Posts image
 const storagePostsImage = multer.diskStorage({
   destination(req, file, cb) {
@@ -121,12 +119,17 @@ export const uploadPostsVideo = multer({ storage: storagePostsVideo })
 
 export const uploaderPostsVideo = expressAsyncHandler(async (req, res) => {
   try {
-    const result = await cloudinary.v2.uploader.upload(req.file.path, {
-      resource_type: "video",
-      chunk_size : 6000000,
-      eager_async: true
-    },
-    function(error, result) {console.log(result, error)});
+    const result = await cloudinary.v2.uploader.upload(
+      req.file.path,
+      {
+        resource_type: 'video',
+        chunk_size: 6000000,
+        eager_async: true,
+      },
+      function (error, result) {
+        console.log(result, error)
+      }
+    )
 
     console.log(result)
 

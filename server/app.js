@@ -8,7 +8,7 @@ import { config } from 'dotenv'
 import userRouter from '../routers/userRouter/index.js'
 import uploadRouter from '../routers/uploadRouter/index.js'
 import postRouter from '../routers/postRouter/index.js'
-import commentRouter from '../routers/commentRouter/index.js';
+import commentRouter from '../routers/commentRouter/index.js'
 
 //dotenv
 config()
@@ -31,7 +31,7 @@ app.use('/api/users', userRouter)
 app.use('/api/posts', postRouter)
 
 //comments
-app.use('/api/comments', commentRouter);
+app.use('/api/comments', commentRouter)
 
 //uploads
 app.use('/api/uploads', uploadRouter)

@@ -24,7 +24,7 @@ export const createPost = expressAsyncHandler(async (req, res) => {
       description,
       image,
       video,
-      category,
+      category
     )
     await db.query(sqlMakePost_into)
 

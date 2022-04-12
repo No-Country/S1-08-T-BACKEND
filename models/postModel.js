@@ -5,7 +5,7 @@ export const post = {
   avatar: String,
   description: String,
   image: String,
-  video:String,
+  video: String,
   category: String,
   created_at: Date,
   likes: Number,
