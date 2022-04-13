@@ -64,3 +64,4 @@ create table if not EXISTS `category` (
 )ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
 
+DESCRIBE category;

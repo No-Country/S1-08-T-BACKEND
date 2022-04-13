@@ -1,5 +1,10 @@
 import expressAsyncHandler from 'express-async-handler'
 import db from '../mysqlConnection/mysqlConnection.js'
+
+
+
+
+
 export const createCategory = expressAsyncHandler(async (req, res) => {
   const { name } = req.body
   try {

@@ -15,7 +15,7 @@ import {
 
 //create post
 export const createPost = expressAsyncHandler(async (req, res) => {
-  const { userid, title, description, image, video, categoryId } = req.body
+  const { userid, title, description, image, video, category } = req.body
 
   try {
     const sqlMakePost_into = intoQueryCreatePost(
@@ -24,7 +24,7 @@ export const createPost = expressAsyncHandler(async (req, res) => {
       description,
       image,
       video,
-      categoryId
+      category,
     )
     await db.query(sqlMakePost_into)
 
