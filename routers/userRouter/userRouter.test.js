@@ -37,7 +37,6 @@ describe('POST/users', () => {
       console.log(response.body)
     })
   })
-
 })
 
 describe('GET/users', () => {

@@ -22,15 +22,14 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `title` varchar(50),
   `description` varchar(500),
   `image` varchar(255),
-  `category` varchar(50),
+  `categoryId` int not null,
   `likes` int,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`categoryId`) REFERENCES category(id)
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
 DESCRIBE posts;
-
-
 
 
 CREATE TABLE IF NOT EXISTS `comments` (
@@ -56,5 +55,11 @@ CREATE TABLE IF NOT EXISTS `followers` (
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
 DESCRIBE followers;
+
+create table if not EXISTS `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY(`id`)
+)ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
 

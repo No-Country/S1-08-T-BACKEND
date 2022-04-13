@@ -327,7 +327,7 @@ export const updateUser = expressAsyncHandler(async (req, res) => {
       }
 
       //update user
-      await db.query(updateQueryUpdateUser(),[updatedUsertoDB, id])
+      await db.query(updateQueryUpdateUser(), [updatedUsertoDB, id])
       res.status(201).json({
         ok: true,
         msg: 'Usuario actualizado correctamente',
@@ -382,7 +382,7 @@ export const editUser = expressAsyncHandler(async (req, res) => {
       }
 
       //update user
-      await db.query(updateQueryEditUser(),[updatedUsertoDB, id])
+      await db.query(updateQueryEditUser(), [updatedUsertoDB, id])
       res.status(201).json({
         ok: true,
         msg: 'Usuario actualizado correctamente',
