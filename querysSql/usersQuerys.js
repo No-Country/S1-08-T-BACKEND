@@ -1,10 +1,10 @@
 //register
-export const selectQueryRegister = (email, nickname) => {
-  return `SELECT * FROM users WHERE email = '${email}' || nickname = '${nickname}'`
+export const selectQueryRegister = (email) => {
+  return `SELECT * FROM users WHERE email = '${email}'`
 }
 
 export const intoQueryRegister = (username, passwd, email, nickname) => {
-  return `INSERT INTO users ( username, password, email, nickname) VALUES ( '${username}',  '${passwd}', '${email}','${nickname}')`
+  return `INSERT INTO users ( username, password, email, nickname) VALUES ( '${username}',  '${passwd}', '${email}','${nickname || null}')`
 }
 
 //login

@@ -30,7 +30,7 @@ export const register = expressAsyncHandler(async (req, res) => {
 
   try {
     //check if the user already exists
-    const sqlMakeUser_select = selectQueryRegister(email, nickname)
+    const sqlMakeUser_select = selectQueryRegister(email)
     let user = await db.query(sqlMakeUser_select)
     console.log(user)
     if (user.length > 0) {

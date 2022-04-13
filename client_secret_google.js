@@ -8,6 +8,9 @@ const {
 
 } = process.env
 
+console.log(CLIEN_ID);
+
+
 export const client_secret_google = {
   client_id: CLIEN_ID,
   project_id: PROJECT_ID,

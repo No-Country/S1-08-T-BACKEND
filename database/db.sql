@@ -19,7 +19,8 @@ DESCRIBE users;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userid` int NOT NULL,
-  `description` varchar(255),
+  `title` varchar(50),
+  `description` varchar(500),
   `image` varchar(255),
   `category` varchar(50),
   `likes` int,
