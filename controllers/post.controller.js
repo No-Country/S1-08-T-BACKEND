@@ -31,13 +31,13 @@ export const createPost = expressAsyncHandler(async (req, res) => {
     // status code 201  if all goes well, return ok: true
     res.status(201).json({
       ok: true,
-      msg: 'Post created',
+      msg: 'Se a creado publicacion correctamente',
     })
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -62,7 +62,7 @@ export const getPosts = expressAsyncHandler(async (req, res) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -102,14 +102,14 @@ export const getPostToId = expressAsyncHandler(async (req, res) => {
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'Post not found',
+        msg: 'Publicacion no encontrada',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -127,14 +127,14 @@ export const getAllPostToUserId = expressAsyncHandler(async (req, res) => {
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'Post not found',
+        msg: 'Publicacion no encontrada',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -164,19 +164,19 @@ export const editPost = expressAsyncHandler(async (req, res) => {
       await db.query(updateQueryEditPost(), [updatedPosttoDB, id])
       res.status(201).json({
         ok: true,
-        msg: 'Post updated successfully',
+        msg: 'Publicacion actualizada correctamente',
       })
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'Post not found',
+        msg: 'Publicacion no encontrada',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -204,19 +204,19 @@ export const likesPost = expressAsyncHandler(async (req, res) => {
       await db.query(updateQuerylikesPost(), [updatedPosttoDB, id])
       res.status(201).json({
         ok: true,
-        msg: 'Post updated successfully',
+        msg: 'Publicacion actualizada correctamente',
       })
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'Post not found',
+        msg: 'Publicacion no encontrada',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -237,19 +237,19 @@ export const deletePost = expressAsyncHandler(async (req, res) => {
       await db.query(sqlMakeUser_delete)
       res.status(201).json({
         ok: true,
-        msg: 'Post removed successfully',
+        msg: 'Publicacion eliminada correctamente',
       })
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'Post not exist',
+        msg: 'Publicacion no encontrada',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })

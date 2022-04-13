@@ -30,13 +30,13 @@ export const register = expressAsyncHandler(async (req, res) => {
 
   try {
     //check if the user already exists
-    const sqlMakeUser_select = selectQueryRegister(email, nickname)
+    const sqlMakeUser_select = selectQueryRegister(email)
     let user = await db.query(sqlMakeUser_select)
     console.log(user)
     if (user.length > 0) {
       return res.status(400).json({
         ok: false,
-        msg: 'User already exists',
+        msg: 'Este usuario ya existe',
       })
     }
 
@@ -55,13 +55,13 @@ export const register = expressAsyncHandler(async (req, res) => {
     // status code 201  if all goes well, return ok: true
     res.status(201).json({
       ok: true,
-      msg: 'User registered ',
+      msg: 'Ususario registrado',
     })
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -77,7 +77,7 @@ export const login = expressAsyncHandler(async (req, res) => {
     if (user?.length === 0) {
       return res.status(400).json({
         ok: false,
-        msg: 'User not exist with this email',
+        msg: 'No existe un usuario con ese email',
       })
     }
 
@@ -86,30 +86,35 @@ export const login = expressAsyncHandler(async (req, res) => {
       username: usernameDB,
       email: emailDB,
       password: passwordDB,
+      nickname: nicknameDB,
+      avatar: avatarDB,
+      backgroundImage: backgroundImageDB,
     } = user[0]
     // password confirm
     const validPassword = bcrypt.compareSync(password, passwordDB)
     if (!validPassword) {
       return res.status(400).json({
         ok: false,
-        msg: 'Invalid password',
+        msg: 'Contraseña incorrecta',
       })
     }
     // Generate JWT
     const token = generateToken(user[0])
 
     res.json({
-      ok: true,
       id: idDB,
       username: usernameDB,
       email: emailDB,
+      nickname: nicknameDB,
+      avatar: avatarDB,
+      backgroundImage: backgroundImageDB,
       token,
     })
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -142,15 +147,24 @@ export const googleLogin = expressAsyncHandler(async (req, res) => {
       console.log(user[0])
 
       if (user.length > 0) {
-        const { id: idDB, username: usernameDB, email: emailDB } = user[0]
+        const {
+          id: idDB,
+          username: usernameDB,
+          email: emailDB,
+          nickname: nicknameDB,
+          avatar: avatarDB,
+          backgroundImage: backgroundImageDB,
+        } = user[0]
 
         const token = generateToken(user[0])
 
         res.json({
-          ok: true,
           id: idDB,
           username: usernameDB,
           email: emailDB,
+          nickname: nicknameDB,
+          avatar: avatarDB,
+          backgroundImage: backgroundImageDB,
           token,
         })
       } else {
@@ -176,15 +190,24 @@ export const googleLogin = expressAsyncHandler(async (req, res) => {
         const user = await getUserDB()
 
         if (user.length > 0) {
-          const { id: idDB, username: usernameDB, email: emailDB } = user[0]
+          const {
+            id: idDB,
+            username: usernameDB,
+            email: emailDB,
+            nickname: nicknameDB,
+            avatar: avatarDB,
+            backgroundImage: backgroundImageDB,
+          } = user[0]
 
           const token = generateToken(user[0])
 
           res.json({
-            ok: true,
             id: idDB,
             username: usernameDB,
             email: emailDB,
+            nickname: nicknameDB,
+            avatar: avatarDB,
+            backgroundImage: backgroundImageDB,
             token,
           })
         }
@@ -194,7 +217,7 @@ export const googleLogin = expressAsyncHandler(async (req, res) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -211,7 +234,7 @@ export const getUsers = expressAsyncHandler(async (req, res) => {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -235,7 +258,6 @@ export const getUserToId = expressAsyncHandler(async (req, res) => {
       } = user[0]
 
       res.status(200).json({
-        ok: true,
         id: idDB,
         username: usernameDB,
         emial: emailDB,
@@ -246,14 +268,14 @@ export const getUserToId = expressAsyncHandler(async (req, res) => {
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'User not found',
+        msg: 'Usuario no encontrado',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -308,7 +330,7 @@ export const updateUser = expressAsyncHandler(async (req, res) => {
       await db.query(updateQueryUpdateUser(), [updatedUsertoDB, id])
       res.status(201).json({
         ok: true,
-        msg: 'User updated successfully',
+        msg: 'Usuario actualizado correctamente',
         updatedUser: {
           username: username || usernameDB,
           email: email || emailDB,
@@ -322,14 +344,14 @@ export const updateUser = expressAsyncHandler(async (req, res) => {
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'User not found',
+        msg: 'Ususario no encontrado',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -363,19 +385,19 @@ export const editUser = expressAsyncHandler(async (req, res) => {
       await db.query(updateQueryEditUser(), [updatedUsertoDB, id])
       res.status(201).json({
         ok: true,
-        msg: 'User updated successfully',
+        msg: 'Usuario actualizado correctamente',
       })
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'User not found',
+        msg: 'Ususario no encontrado',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -396,19 +418,19 @@ export const deleteUser = expressAsyncHandler(async (req, res) => {
       await db.query(sqlMakeUser_delete)
       res.status(201).json({
         ok: true,
-        msg: 'User removed successfully',
+        msg: 'Ususario eliminado correctamente',
       })
     } else {
       res.status(404).json({
         ok: false,
-        msg: 'User not exist',
+        msg: 'Ususario no encontrado',
       })
     }
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })

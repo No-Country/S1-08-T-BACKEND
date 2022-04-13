@@ -10,9 +10,12 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLC
 
 {
     "userid": "2",
-    "description": " Les comparto esta receta de locro que explica muy bien los pasos a seguir. Ideal para principiantes.",
-    "image": "https:https://i.picsum.photos/id/1060/5598/3732.jpg?hmac=31kU0jp5ejnPTdEt-8tAXU5sE-buU-y1W1qk_BsiUC8",
-    "likes": 654
+    "title": "title",
+    "description": "food",
+    "image": "https://media.istockphoto.com/photos/selection-of-american-food-picture-id931308812?k=20&m=931308812&s=612x612&w=0&h=Tudia4RSCvfpWZhli0ehScrzeCtbwvTqB9BZaCta_qA=",
+    "video": "videoUrl",
+    "category": "category"
+
 }
 
 
@@ -71,9 +74,12 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLC
 
 {
     "userid": "2",
+    "title": "title",
     "description": "food",
     "image": "https://media.istockphoto.com/photos/selection-of-american-food-picture-id931308812?k=20&m=931308812&s=612x612&w=0&h=Tudia4RSCvfpWZhli0ehScrzeCtbwvTqB9BZaCta_qA=",
-    "likes": 654
+    "video": "videoUrl",
+    "category": "category"
+
 }
 
 
