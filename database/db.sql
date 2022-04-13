@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `title` varchar(50),
   `description` varchar(500),
   `image` varchar(255),
-  `category` varchar(50),
+  `video` varchar(255),
+  `categoryId` varchar(50),
   `likes` int,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
