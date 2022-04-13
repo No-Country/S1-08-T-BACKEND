@@ -6,7 +6,7 @@ export const post = {
   description: String,
   image: String,
   video: String,
-  category: String,
+  categoryId: String,
   created_at: Date,
   likes: Number,
 }
