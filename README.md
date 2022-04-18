@@ -1059,7 +1059,7 @@ Respuesta exitosa (201 OK)
         "id": 4,
         "postid": 10,
         "userid": 3,
-        "username": "updateImagen",
+        "username": "usuario",
         "avatar": "https://i.pravatar.cc/300",
         "comment": "que ricooo",
         "posted": "2022-03-10T07:58:42.000Z",
@@ -1069,7 +1069,7 @@ Respuesta exitosa (201 OK)
         "id": 5,
         "postid": 10,
         "userid": 3,
-        "username": "updateImagen",
+        "username": "usuario",
         "avatar": "https://i.pravatar.cc/300",
         "comment": "se vee geniall",
         "posted": "2022-03-10T08:02:56.000Z",
@@ -1227,4 +1227,268 @@ Respuesta exitosa (201 OK)
 {
   ok: true,
   msg: "comment removed successfully"
+}
+
+
+## followers ENDPOINT
+
+para utilizar este endpoint se necesita enviar un objeto contenido con los datos requeridos por la base de datos:
+
+userid: string,  es el id del usuario logueado
+followerId: string, es el id del usuario que se va seguir
+
+
+
+
+### Peticion POST
+
+api-gout.herokuapp.com/api/followers
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/followers";
+
+let data = {
+"userid": 3,
+"followerId": 2
+}
+
+fetch(url, {
+method: 'POST',
+body: JSON.stringify(data),
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+ok: true,
+msg: "follower created"
+}
+
+
+
+
+
+
+## followers/:ID ENDPOINT
+
+para utilizar este endpoint se necesita enviar id de el follower en el parametro
+
+id: Numbrer
+
+### Peticion GET
+
+api-gout.herokuapp.com/api/followers/:id
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/followers/2";
+
+fetch(url, {
+method: 'GET',
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+  "id": 2,
+  "userid": 3,
+  "followerId": 2,
+  "username": "usuario",
+  "nickname": " nickusuario",
+  "avatar": "https://i.pravatar.cc/300"
+}
+
+
+
+
+
+## followers/followerToUserid/:userid ENDPOINT
+
+para utilizar este endpoint se necesita enviar userid de el usuario logueado en el parametro
+
+devuelve todos los usuarios que siguen al usuario logueado
+
+userid: Numbrer
+
+### Peticion GET
+
+api-gout.herokuapp.com/api/followers/followersToUserid/:userid
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/followers/followersToUserid/3";
+
+fetch(url, {
+method: 'GET',
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+[
+  {
+    "id": 2,
+    "userid": 3,
+    "followerId": 2,
+    "username": "usuario",
+    "nickname": " nickusuario",
+    "avatar": "https://i.pravatar.cc/300"
+  },
+  {
+    "id": 6,
+    "userid": 3,
+    "followerId": 8,
+    "username": "usuario",
+    "nickname": " nickusuario",
+    "avatar": "https://i.pravatar.cc/300"
+  }
+]
+
+
+## followers/followingToUserid/:userid ENDPOINT
+
+para utilizar este endpoint se necesita enviar userid de el usuario logueado en el parametro
+
+devuelve todos los usuarios seguidos
+
+userid: Numbrer
+
+### Peticion GET
+
+api-gout.herokuapp.com/api/followers/followingToUserid/:userid
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/followers/followingToUserid/2";
+
+fetch(url, {
+method: 'GET',
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+[
+  {
+    "id": 2,
+    "userid": 3,
+    "followerId": 2,
+    "username": "usuario1",
+    "nickname": " nickusuario",
+    "avatar": "https://i.pravatar.cc/300"
+  },
+  {
+    "id": 6,
+    "userid": 3,
+    "followerId": 8,
+    "username": "usuario2",
+    "nickname": " nickusuario2",
+    "avatar": "https://i.pravatar.cc/300"
+  }
+]
+
+
+## followers/delete/:id ENDPOINT
+
+para utilizar este endpoint se necesita enviar id de follower en el parametro
+
+id: Numbrer
+
+### Peticion DETELE
+
+api-gout.herokuapp.com/api/followers/delete/:id
+
+ejemplo
+
+let url = "api-gout.herokuapp.com/api/followers/delete/3";
+
+fetch(url, {
+method: 'DETELE',
+headers:{
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+}
+}).then(res => res.json())
+.catch(error => console.error('Error:', error))
+.then(response => console.log('Success:', response));
+
+Respuesta exitosa (201 OK)
+
+{
+  ok: true,
+  msg: "follower removed successfully"
+}
+
+
+/recomendaciones crear un hook o redux para el estado de follower 
+/crear un componente follower que sea un boton para seguir y dejar de seguir a los usuarios, aqui un breve ejemplo de como se podria implementar
+
+  const followfollower = () => {
+    //ToDo hook o redux para enviar los seguidos a la base de datos
+  }
+
+  const followers = () => {
+    //ToDo hook o redux para traer (get) los amigos seguidos por id
+  }
+
+import React, { useState } from "react";
+import usefollower from "hooks/usefollower";
+
+
+
+export default function Followfollower({ id }) {
+  const { followfollower, followers } = usefollower();
+
+
+// se compara el follower traido de la base de datos con el que se selecciono para verificar si se sigue o no en el momento
+
+  const isFollowed = followers.some((followerId) => followersId === id);
+
+//click en el boton de seguir para agregar el amigo a la base de datos
+  const handleClick = () => {
+    followfollower({ id });
+  };
+
+  
+  // implementar estado que verifique si esta seguido o no el usuario
+  const [label, emoji] = isFollowed
+    ? ["Stop following", "❌"]
+    : ["follow", "❤️"];
+
+
+//renderisar boton de seguir
+  return (
+
+    <>
+      <button onClick={handleClick}>
+        <span aria-label={label} role="img">
+          {emoji}
+        </span>
+      </button>
+    </>
+
+  );
 }
