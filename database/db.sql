@@ -49,9 +49,7 @@ DESCRIBE comments;
 CREATE TABLE IF NOT EXISTS `followers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `nickname` varchar(50) NOT NULL,
-  `avatar` varchar(50),
+  `followerid` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 

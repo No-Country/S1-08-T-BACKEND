@@ -5,13 +5,11 @@
 
 POST http://localhost:8000/api/followers
 Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
 
 {
-    "userid": 3,
-    "followerID": 2,
-    "username": "prueba",
-    "nickname": "nickprueba",
-    "avatar": "https://picsum.photos/id/1/200/300"
+    "userid": 2,
+    "followerId": 4
 }
 
 
@@ -27,13 +25,13 @@ GET http://localhost:8000/api/followers/2
 
 
 
-GET http://localhost:8000/api/followers/followersToUserid/3
+GET http://localhost:8000/api/followers/followersToUserid/2
 
 
 ### all user followers to id GET http://localhost:8000/api/followers Content-Type: application/json
 
 
-GET http://localhost:8000/api/followers/followingToUserid/3
+GET http://localhost:8000/api/followers/followingToUserid/2
 
 
 

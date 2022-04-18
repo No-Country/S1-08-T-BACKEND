@@ -20,14 +20,14 @@ const followerRouter = Router();
 followerRouter.post('/',isAuth, createfollower);
 
 // get followers from user router
-followerRouter.get('/followersToUserid/:userid',isAuth, getAllfollowersToUserId);
+followerRouter.get('/followersToUserid/:userid',getAllfollowersToUserId);
 
-// get followers from user router
-followerRouter.get('/followingToUserid/:userid',isAuth, getAllfollowingToUserId);
+// get following from user router
+followerRouter.get('/followingToUserid/:userid', getAllfollowingToUserId);
 
 
 // get follower/id router
-followerRouter.get('/:id',isAuth, getfollowerToId );
+followerRouter.get('/:id', getfollowerToId );
 
 
 // delete follower router
