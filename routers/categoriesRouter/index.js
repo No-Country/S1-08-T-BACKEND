@@ -11,9 +11,9 @@ const categoryRouter = Router()
 
 categoryRouter.post('/', isAuth, createCategory)
 
-categoryRouter.get('/', isAuth, findAllCategories)
+categoryRouter.get('/',  findAllCategories)
 
-categoryRouter.get('/:id', isAuth, findOneCategory)
+categoryRouter.get('/:id',  findOneCategory)
 
 categoryRouter.put('/:id', isAuth, updateCategory)
 

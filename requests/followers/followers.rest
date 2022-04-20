@@ -41,3 +41,49 @@ GET http://localhost:8000/api/followers/followingToUserid/2
 
 
 DELETE http://localhost:8000/api/followers/delete/4
+
+
+### remote
+
+### followers follower https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+
+
+POST https://api-gout.herokuapp.com/api/followers
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+{
+    "userid": 9,
+    "followerId": 5
+}
+
+
+
+### follower to id GET https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+
+
+GET https://api-gout.herokuapp.com/api/followers/3
+
+
+### all user followers to id GET https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+
+
+GET https://api-gout.herokuapp.com/api/followers/followersToUserid/2
+
+
+### all user followers to id GET https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+
+GET http://localhost:8000/api/followers/followingToUserid/2
+
+
+
+
+### follower  DELETE http://localhost:8000/api/users/delete/:id 
+
+
+
+DELETE http://localhost:8000/api/followers/delete/4
