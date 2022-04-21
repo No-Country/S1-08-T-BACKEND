@@ -21,10 +21,10 @@ postRouter.post('/', isAuth, createPost)
 postRouter.get('/', getPosts)
 
 // get Post/id router
-postRouter.get('/:id', isAuth, getPostToId)
+postRouter.get('/:id', getPostToId)
 
 // get Post/id router
-postRouter.get('/userPosts/:userid', isAuth, getAllPostToUserId)
+postRouter.get('/userPosts/:userid', getAllPostToUserId)
 
 //edit Post router
 postRouter.put('/edit/:id', isAuth, editPost)
