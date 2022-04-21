@@ -31,7 +31,7 @@ export const createPost = expressAsyncHandler(async (req, res) => {
     // status code 201  if all goes well, return ok: true
     res.status(201).json({
       ok: true,
-      msg: 'Se a creado publicacion correctamente',
+      msg: 'Se ha creado la publicacion correctamente',
     })
   } catch (error) {
     console.log(error)
