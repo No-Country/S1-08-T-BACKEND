@@ -95,7 +95,7 @@ GET http://api-gout.herokuapp.com/api/posts
 
 
 
-GET http://api-gout.herokuapp.com/api/posts/50
+GET http://api-gout.herokuapp.com/api/posts/51
 
 
 
@@ -122,4 +122,5 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLC
 
 
 
-DELETE http://api-gout.herokuapp.com/api/posts/delete/4
+DELETE http://api-gout.herokuapp.com/api/posts/delete/8
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
