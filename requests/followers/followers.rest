@@ -42,6 +42,13 @@ GET http://localhost:8000/api/followers/followingToUserid/20
 
 DELETE http://localhost:8000/api/followers/delete/4
 
+### follower  DELETE All http://localhost:8000/api/users/delete/:id 
+
+
+
+DELETE http://localhost:8000/api/followers/delete/
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
 
 ### remote
 
@@ -91,3 +98,4 @@ DELETE https://api-gout.herokuapp.com/api/followers/delete/4
 ### follower  DELETE All https://api-gout.herokuapp.com0/api/users/delete/:id 
 
 DELETE https://api-gout.herokuapp.com/api/followers/delete
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI

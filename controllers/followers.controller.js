@@ -1,6 +1,7 @@
 import expressAsyncHandler from 'express-async-handler';
 import db from '../mysqlConnection/mysqlConnection.js';
 import { 
+  deleteQueryDeleteAllfollower,
   deleteQueryDeletefollower, 
   intoQueryCreatefollower, 
   selectQueryCreatefollower, 

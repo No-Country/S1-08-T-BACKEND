@@ -37,5 +37,5 @@ export const deleteQueryDeletefollower = (id) => {
 //delete All follower
 
 export const deleteQueryDeleteAllfollower = (id) => {
-    return `DELETE * FROM followers`
+    return `DELETE  FROM followers`
 }
