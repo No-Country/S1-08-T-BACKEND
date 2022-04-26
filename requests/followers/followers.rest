@@ -14,6 +14,10 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLC
 
 
 
+### follower to id GET All http://localhost:8000/api/followers Content-Type: application/json
+
+GET http://localhost:8000/api/followers
+
 ### follower to id GET http://localhost:8000/api/followers Content-Type: application/json
 
 
@@ -67,9 +71,11 @@ Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLC
 
 
 
+### follower GET All https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+GET https://api-gout.herokuapp.com/api/followers
+
 ### follower to id GET https://api-gout.herokuapp.com/api/followers Content-Type: application/json
-
-
 
 GET https://api-gout.herokuapp.com/api/followers/3
 

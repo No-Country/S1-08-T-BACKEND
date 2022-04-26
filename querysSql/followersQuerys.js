@@ -9,7 +9,7 @@ export const intoQueryCreatefollower = (userid, followerId) => {
 
 //get follower to id
 export const selectQueryGetAllfollowers = (id) => {
-    return `SELECT  F.id, F.userid, F.followerId, U.username, U.nickname, U.avatar FROM followers as F INNER JOIN users as U `
+    return `SELECT  F.id, F.userid, F.followerId, U.username, U.nickname, U.avatar FROM followers as F INNER JOIN users as U WHERE F.userid=U.id`
 }
 
 //get follower to id
