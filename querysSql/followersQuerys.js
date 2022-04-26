@@ -7,6 +7,10 @@ export const intoQueryCreatefollower = (userid, followerId) => {
     return `INSERT INTO followers ( userid, followerId ) VALUES ( '${userid}', '${followerId}')`;
 }
 
+//get follower to id
+export const selectQueryGetAllfollowers = (id) => {
+    return `SELECT  F.id, F.userid, F.followerId, U.username, U.nickname, U.avatar FROM followers as F INNER JOIN users as U `
+}
 
 //get follower to id
 export const selectQueryGetfollowerToId = (id) => {

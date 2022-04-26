@@ -8,6 +8,7 @@ import {
     getAllfollowersToUserId,
     getfollowerToId,
     deleteAllfollower,
+    getAllfollowers,
 } from '../../controllers/followers.controller.js';
 import { isAuth } from '../../util/util.js';
 
@@ -19,6 +20,10 @@ const followerRouter = Router();
 
 // follower followers router
 followerRouter.post('/',isAuth, createfollower);
+
+// get all followers from user router
+followerRouter.get('/',getAllfollowers);
+
 
 // get followers from user router
 followerRouter.get('/followersToUserid/:userid',getAllfollowersToUserId);
