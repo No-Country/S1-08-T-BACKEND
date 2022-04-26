@@ -19,12 +19,12 @@ export const selectQueryGetfollowerToId = (id) => {
 
 //get all followers to user
 export const selectQueryGetAllfollowerToUserId = (userid) => {
-    return `SELECT  F.id, F.userid, F.followerId, U.username, U.nickname, U.avatar FROM followers as F INNER JOIN users as U  WHERE  F.followerId = '${userid}' && F.userid=U.id`
+    return `SELECT  F.id, F.userid, F.followerId, U.username, U.nickname, U.avatar FROM followers as F INNER JOIN users as U  WHERE F.userid = '${userid}' && F.followerId=U.id`
 }
 
 //get all following to user
 export const selectQueryGetAllfollowingToUserId = (userid) => {
-    return `SELECT  F.id, F.userid, F.followerId, U.username, U.nickname, U.avatar FROM followers as F INNER JOIN users as U  WHERE  F.userid = '${userid}' && F.followerId=U.id`
+    return `SELECT  F.id, F.userid, F.followerId, U.username, U.nickname, U.avatar FROM followers as F INNER JOIN users as U  WHERE  F.followerId = '${userid}' && F.userid=U.id`
 }
 
 
