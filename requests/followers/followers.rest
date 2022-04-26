@@ -90,7 +90,7 @@ GET https://api-gout.herokuapp.com/api/followers/followersToUserid/7
 ### all user followers to id GET https://api-gout.herokuapp.com/api/followers Content-Type: application/json
 
 
-GET https://api-gout.herokuapp.com/api/followers/followingToUserid/7
+GET https://api-gout.herokuapp.com/api/followers/followingToUserid/20
 
 
 
