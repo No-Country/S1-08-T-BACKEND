@@ -32,3 +32,10 @@ export const selectQueryDeletefollower = (id) => {
 export const deleteQueryDeletefollower = (id) => {
     return `DELETE  FROM followers WHERE id = '${id}'`
 }
+
+
+//delete All follower
+
+export const deleteQueryDeleteAllfollower = (id) => {
+    return `DELETE * FROM followers`
+}

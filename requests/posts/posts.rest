@@ -103,7 +103,7 @@ GET http://api-gout.herokuapp.com/api/posts/51
 
 
 
-GET http://api-gout.herokuapp.com/api/posts/userPosts/3
+GET http://api-gout.herokuapp.com/api/posts/userPosts/2
 
 
 

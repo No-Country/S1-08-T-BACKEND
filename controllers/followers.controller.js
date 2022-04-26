@@ -163,3 +163,30 @@ export const deletefollower = expressAsyncHandler(async (req, res) => {
     });
   }
 });
+
+//delete All follower
+export const deleteAllfollower = expressAsyncHandler(async (req, res) => {
+  try {
+
+    // delete query
+    const sqlMakeUser_delete = deleteQueryDeleteAllfollower();
+    if (sqlMakeUser_delete) {
+      await db.query(sqlMakeUser_delete);
+      res.status(201).json({
+        ok: true,
+        msg: "followers removed successfully"
+      });
+    } else {
+      res.status(404).json({
+        ok: false,
+        msg: "followers not exist"
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "An error has arisen in the process, please review"
+    });
+  }
+});

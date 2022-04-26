@@ -7,6 +7,7 @@ import {
     getAllfollowingToUserId,
     getAllfollowersToUserId,
     getfollowerToId,
+    deleteAllfollower,
 } from '../../controllers/followers.controller.js';
 import { isAuth } from '../../util/util.js';
 
@@ -33,5 +34,7 @@ followerRouter.get('/:id', getfollowerToId );
 // delete follower router
 followerRouter.delete('/delete/:id',isAuth, deletefollower );
 
+// delete All follower router
+followerRouter.delete('/delete',isAuth, deleteAllfollower );
 
 export default followerRouter;
