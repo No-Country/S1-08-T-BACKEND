@@ -19,17 +19,18 @@ DESCRIBE users;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int NOT NULL AUTO_INCREMENT,
   `userid` int NOT NULL,
-  `description` varchar(255),
+  `title` varchar(50),
+  `description` varchar(500),
   `image` varchar(255),
-  `category` varchar(50),
+  `video` varchar(255),
+  `categoryId` int not null,
   `likes` int,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`categoryId`) REFERENCES category(id)
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
 DESCRIBE posts;
-
-
 
 
 CREATE TABLE IF NOT EXISTS `comments` (
@@ -37,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `postid` int NOT NULL,
   `userid` int NOT NULL,
   `comment` varchar(200) NOT NULL,
-  `posted` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `likes` int,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
@@ -48,12 +49,17 @@ DESCRIBE comments;
 CREATE TABLE IF NOT EXISTS `followers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `nickname` varchar(50) NOT NULL,
-  `avatar` varchar(50),
+  `followerid` int NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
 DESCRIBE followers;
 
+create table if not EXISTS `category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY(`id`)
+)ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
 
+
+DESCRIBE category;

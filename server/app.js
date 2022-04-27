@@ -8,6 +8,9 @@ import { config } from 'dotenv'
 import userRouter from '../routers/userRouter/index.js'
 import uploadRouter from '../routers/uploadRouter/index.js'
 import postRouter from '../routers/postRouter/index.js'
+import commentRouter from '../routers/commentRouter/index.js'
+import categoryRouter from '../routers/categoriesRouter/index.js'
+import followerRouter from '../routers/followerRouter/index.js'
 
 //dotenv
 config()
@@ -29,8 +32,17 @@ app.use('/api/users', userRouter)
 //posts
 app.use('/api/posts', postRouter)
 
+//comments
+app.use('/api/comments', commentRouter)
+
 //uploads
 app.use('/api/uploads', uploadRouter)
+
+//followers
+app.use('/api/followers', followerRouter)
+
+//categories
+app.use('/api/category', categoryRouter)
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))

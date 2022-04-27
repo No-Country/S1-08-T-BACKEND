@@ -1,0 +1,107 @@
+
+### followers follower http://localhost:8000/api/followers Content-Type: application/json
+
+
+
+POST http://localhost:8000/api/followers
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+{
+    "userid": 2,
+    "followerId": 5
+}
+
+
+
+### follower to id GET All http://localhost:8000/api/followers Content-Type: application/json
+
+GET http://localhost:8000/api/followers
+
+### follower to id GET http://localhost:8000/api/followers Content-Type: application/json
+
+
+
+GET http://localhost:8000/api/followers/100
+
+
+### all user followers to id GET http://localhost:8000/api/followers Content-Type: application/json
+
+
+
+GET http://localhost:8000/api/followers/followersToUserid/20
+
+
+### all user followers to id GET http://localhost:8000/api/followers Content-Type: application/json
+
+
+GET http://localhost:8000/api/followers/followingToUserid/20
+
+
+
+
+### follower  DELETE http://localhost:8000/api/users/delete/:id 
+
+
+
+DELETE http://localhost:8000/api/followers/delete/4
+
+### follower  DELETE All http://localhost:8000/api/users/delete/:id 
+
+
+
+DELETE http://localhost:8000/api/followers/delete/
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+
+### remote
+
+### followers follower https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+
+
+POST https://api-gout.herokuapp.com/api/followers
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+{
+    "userid": 9,
+    "followerId": 5
+}
+
+
+
+### follower GET All https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+GET https://api-gout.herokuapp.com/api/followers
+
+### follower to id GET https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+GET https://api-gout.herokuapp.com/api/followers/3
+
+
+### all user followers to id GET https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+
+
+GET https://api-gout.herokuapp.com/api/followers/followersToUserid/7
+
+
+### all user followers to id GET https://api-gout.herokuapp.com/api/followers Content-Type: application/json
+
+
+GET https://api-gout.herokuapp.com/api/followers/followingToUserid/20
+
+
+
+
+### follower  DELETE https://api-gout.herokuapp.com0/api/users/delete/:id 
+
+
+
+DELETE https://api-gout.herokuapp.com/api/followers/delete/4
+
+### follower  DELETE All https://api-gout.herokuapp.com0/api/users/delete/:id 
+
+DELETE https://api-gout.herokuapp.com/api/followers/delete
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI

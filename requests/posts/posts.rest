@@ -5,12 +5,17 @@
 
 POST http://localhost:8000/api/posts
 Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
 
 {
     "userid": "2",
-    "description": "que buen postre",
-    "image": "https:https://i.picsum.photos/id/1060/5598/3732.jpg?hmac=31kU0jp5ejnPTdEt-8tAXU5sE-buU-y1W1qk_BsiUC8",
-    "likes": 654
+    "title": "title",
+    "description": "food",
+    "image": "https://media.istockphoto.com/photos/selection-of-american-food-picture-id931308812?k=20&m=931308812&s=612x612&w=0&h=Tudia4RSCvfpWZhli0ehScrzeCtbwvTqB9BZaCta_qA=",
+    "video": "videoUrl",
+    "category": 2
+
 }
 
 
@@ -40,14 +45,82 @@ GET http://localhost:8000/api/posts/userPosts/3
 
 PUT http://localhost:8000/api/posts/edit/2
 Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
 
 {
-    "title": "super ricooo",
-    "description": "update description"
+    "description": "super ricooo"
+
 }
 
 ### post  DELETE http://localhost:8000/api/users/delete/:id 
 
 
 
-DELETE http://localhost:8000/api/posts/delete/4
+DELETE http://localhost:8000/api/posts/delete/6
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+
+
+### url remota
+
+
+### posts POST http://api-gout.herokuapp.com/api/posts Content-Type: application/json
+
+
+
+POST http://api-gout.herokuapp.com/api/posts
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+
+{
+    "userid": "6",
+    "title": "Pizza italiana",
+    "description": "Deliciosa pizza",
+    "image": "https://www.guidingtech.com/wp-content/uploads/HD-Mouth-Watering-Food-Wallpapers-for-Desktop-12_4d470f76dc99e18ad75087b1b8410ea9.jpg",
+    "video": "videoUrl",
+    "category": 5
+
+}
+
+
+### posts GET http://api-gout.herokuapp.com/api/posts Content-Type: application/json
+
+
+
+GET http://api-gout.herokuapp.com/api/posts
+
+
+### post to id GET http://api-gout.herokuapp.com/api/posts Content-Type: application/json
+
+
+
+GET http://api-gout.herokuapp.com/api/posts/51
+
+
+
+### all user posts to id GET http://api-gout.herokuapp.com/api/posts Content-Type: application/json
+
+
+
+GET http://api-gout.herokuapp.com/api/posts/userPosts/2
+
+
+
+### edit user put http://api-gout.herokuapp.com/api/users/profile Content-Type: application/json
+
+PUT http://api-gout.herokuapp.com/api/posts/edit/3
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
+
+{
+    "description": "esta es la receta de locro"
+
+}
+
+### post  DELETE http://api-gout.herokuapp.com/api/users/delete/:id 
+
+
+
+DELETE http://api-gout.herokuapp.com/api/posts/delete/8
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI

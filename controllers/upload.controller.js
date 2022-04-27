@@ -27,14 +27,14 @@ export const uploaderAvatar = expressAsyncHandler(async (req, res) => {
     res.send(result.url)
 
     //link image local
-    // res.send(`https://api-ingamer.herokuapp.com/${req.file.path}`);
+    // res.send(`https://api-gout.herokuapp.com/${req.file.path}`);
 
     await fs.unlink(req.file.path)
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
@@ -59,35 +59,33 @@ export const uploaderBackgroundImage = expressAsyncHandler(async (req, res) => {
     res.send(result.url)
 
     //link image local
-    // res.send(`https://api-ingamer.herokuapp.com/${req.file.path}`);
+    // res.send(`https://api-gout.herokuapp.com/${req.file.path}`);
 
     await fs.unlink(req.file.path)
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })
 
-//Posts
-const storagePosts = multer.diskStorage({
+//Posts image
+const storagePostsImage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, 'uploads/posts/')
+    cb(null, 'uploads/postsImage/')
   },
   filename(req, file, cb) {
     cb(null, `${Date.now() + path.extname(file.originalname)}`)
   },
 })
 
-export const uploadPosts = multer({ storage: storagePosts })
+export const uploadPostsImage = multer({ storage: storagePostsImage })
 
-export const uploaderPosts = expressAsyncHandler(async (req, res) => {
+export const uploaderPostsImage = expressAsyncHandler(async (req, res) => {
   try {
-    const result = await cloudinary.v2.uploader.upload(req.file.path, {
-      resource_type: ' video ',
-    })
+    const result = await cloudinary.v2.uploader.upload(req.file.path)
 
     console.log(result)
 
@@ -95,14 +93,58 @@ export const uploaderPosts = expressAsyncHandler(async (req, res) => {
     res.send(result.url)
 
     //link image local
-    // res.send(`https://api-ingamer.herokuapp.com/${req.file.path}`);
+    // res.send(`https://api-gout.herokuapp.com/${req.file.path}`);
 
-    // await fs.unlink(req.file.path)
+    await fs.unlink(req.file.path)
   } catch (error) {
     console.log(error)
     res.status(500).json({
       ok: false,
-      msg: 'An error has arisen in the process, please review',
+      msg: 'Un error ha ocurrido, por favor revise',
+    })
+  }
+})
+
+//Posts Video
+const storagePostsVideo = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'uploads/postsVideo/')
+  },
+  filename(req, file, cb) {
+    cb(null, `${Date.now() + path.extname(file.originalname)}`)
+  },
+})
+
+export const uploadPostsVideo = multer({ storage: storagePostsVideo })
+
+export const uploaderPostsVideo = expressAsyncHandler(async (req, res) => {
+  try {
+    const result = await cloudinary.v2.uploader.upload(
+      req.file.path,
+      {
+        resource_type: 'video',
+        chunk_size: 6000000,
+        eager_async: true,
+      },
+      function (error, result) {
+        console.log(result, error)
+      }
+    )
+
+    console.log(result)
+
+    //link video cloudinary
+    res.send(result.url)
+
+    //link image local
+    // res.send(`https://api-gout.herokuapp.com/${req.file.path}`);
+
+    await fs.unlink(req.file.path)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      ok: false,
+      msg: 'Un error ha ocurrido, por favor revise',
     })
   }
 })

@@ -1,10 +1,10 @@
 //register
-export const selectQueryRegister = (email, nickname) => {
-  return `SELECT * FROM users WHERE email = '${email}' || nickname = '${nickname}'`
+export const selectQueryRegister = (email) => {
+  return `SELECT * FROM users WHERE email = '${email}'`
 }
 
 export const intoQueryRegister = (username, passwd, email, nickname) => {
-  return `INSERT INTO users ( username, password, email, nickname) VALUES ( '${username}',  '${passwd}', '${email}','${nickname}')`
+  return `INSERT INTO users ( username, password, email, nickname) VALUES ( '${username}',  '${passwd}', '${email}','${nickname || null}')`
 }
 
 //login
@@ -36,8 +36,8 @@ export const selectQueryUpdateUser = (id) => {
   return `SELECT * FROM users WHERE id = '${id}'`
 }
 
-export const updateQueryUpdateUser = (id, updatedUsertoDB) => {
-  return 'UPDATE users set ? WHERE id = ?', [updatedUsertoDB, id]
+export const updateQueryUpdateUser = () => {
+  return 'UPDATE users set ? WHERE id = ?'
 }
 
 //edite user
@@ -45,8 +45,8 @@ export const selectQueryEditUser = (id) => {
   return `SELECT * FROM users WHERE id = '${id}'`
 }
 
-export const updateQueryEditUser = (id, updatedUsertoDB) => {
-  return 'UPDATE users set ? WHERE id = ?', [updatedUsertoDB, id]
+export const updateQueryEditUser = () => {
+  return 'UPDATE users set ? WHERE id = ?'
 }
 
 //delete user
