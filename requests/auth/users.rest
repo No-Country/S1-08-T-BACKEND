@@ -113,4 +113,9 @@ Content-Type: application/json
 
 GET https://api-gout.herokuapp.com/api/users
 
+###  DELETE http://localhost:8000/api/users/delete/:id 
+
+
+DELETE https://api-gout.herokuapp.com/api/users/delete/13
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InBydWViYTQiLCJ1c2VybmFtZSI6InBydWViYTQiLCJlbWFpbCI6InBydWViYUBnbWFpbC5jb200IiwiaWF0IjoxNjQ4NTY3NDc0LCJleHAiOjE2NTExNTk0NzR9.Kb_wAzE8ye9y8ARnCoUqZBhLXBd02_mz5BOx10FshkI
 

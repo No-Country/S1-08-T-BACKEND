@@ -1,10 +1,12 @@
 import expressAsyncHandler from 'express-async-handler';
 import db from '../mysqlConnection/mysqlConnection.js';
 import { 
+  deleteQueryDeleteAllfollower,
   deleteQueryDeletefollower, 
   intoQueryCreatefollower, 
   selectQueryCreatefollower, 
   selectQueryDeletefollower, 
+  selectQueryGetAllfollowers, 
   selectQueryGetAllfollowerToUserId, 
   selectQueryGetAllfollowingToUserId, 
   selectQueryGetfollowerToId 
@@ -49,6 +51,31 @@ export const createfollower = expressAsyncHandler(async (req, res) => {
     });
   }
 
+});
+
+//get All followers
+export const getAllfollowers = expressAsyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const sqlMakefollower = selectQueryGetAllfollowers();
+    const follower = await db.query(sqlMakefollower);
+    console.log(follower);
+    if (follower) {
+      res.status(200).json(follower);
+    } else {
+      res.status(404).json({
+        ok: false,
+        msg: " Not follower "
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "An error has arisen in the process, please review"
+    });
+  }
 });
 
 
@@ -153,6 +180,33 @@ export const deletefollower = expressAsyncHandler(async (req, res) => {
       res.status(404).json({
         ok: false,
         msg: "follower not exist"
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "An error has arisen in the process, please review"
+    });
+  }
+});
+
+//delete All follower
+export const deleteAllfollower = expressAsyncHandler(async (req, res) => {
+  try {
+
+    // delete query
+    const sqlMakeUser_delete = deleteQueryDeleteAllfollower();
+    if (sqlMakeUser_delete) {
+      await db.query(sqlMakeUser_delete);
+      res.status(201).json({
+        ok: true,
+        msg: "followers removed successfully"
+      });
+    } else {
+      res.status(404).json({
+        ok: false,
+        msg: "followers not exist"
       });
     }
   } catch (error) {
